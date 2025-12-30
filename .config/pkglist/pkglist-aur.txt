@@ -1,0 +1,2 @@
+mihomo-party-bin
+swaylock-effects-git
