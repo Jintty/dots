@@ -1,0 +1,109 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 36,
+    "spacing": 3,
+    
+    "modules-left": ["niri/workspaces", "niri/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "pulseaudio#microphone", "network", "temperature", "cpu", "memory", "battery", "tray", "custom/notification"],
+
+    "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "active": "",
+            "default": ""
+        }
+    },
+
+    "niri/window": {
+        "format": "{title}",
+        "max-length": 40,
+        "rewrite": {
+            "(.*) - Zen Browser": "Zen Browser",
+            "(.*) - Visual Studio Code": "VS Code"
+        }
+    },
+
+    "clock": {
+        "interval": 1,
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": " {:%H:%M:%S   %m-%d}"
+    },
+
+    "cpu": {
+        "interval": 1,
+        "format": "  {usage}%",
+        "tooltip": false
+    },
+
+    "memory": {
+        "interval": 2,
+        "format": "  {}%"
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": " Muted",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "network": {
+        "interval": 5,
+        "format-wifi": "   {essid}",
+        "format-ethernet": " Eth",
+        "format-disconnected": "⚠ Off",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "on-click": "nm-connection-editor"
+    },
+
+    "battery": {
+        "interval": 5,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}  {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10
+    },
+
+    "custom/notification": {
+        "format": " ",
+        "on-click": "makoctl dismiss",
+        "on-click-right": "makoctl mode -t dnd",
+        "tooltip": false
+    },
+    "temperature": {
+        // "thermal-zone": 0,  // 如果显示不准，可能需要调整这个数字
+        // "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input", // 终极大法：直接指定文件路径
+        "critical-threshold": 80, // 超过80度变红
+        "format-critical": "{temperatureC}°C {icon}", // 高温时的显示格式
+        "format": "{temperatureC}°C {icon}",          // 正常时的显示格式
+        "format-icons": ["🥶", "", "🥵"],           // 图标：冷、中、热
+        "interval": 2
+    },
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": " Muted",
+        "on-click": "~/.config/niri/scripts/mic-toggle.sh",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-",
+        "scroll-step": 5
+    },
+}
