@@ -3,7 +3,7 @@ font-family = "Maple Mono NF CN"
 
 theme = "Catppuccin Mocha"
 
-background-opacity = 0.85
+background-opacity = 0.75
 
 window-decoration = false
 

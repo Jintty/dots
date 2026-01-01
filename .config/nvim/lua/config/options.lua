@@ -5,6 +5,8 @@
 vim.opt.termguicolors = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.list = false
+vim.opt.scrolloff = 999
+vim.opt.sidescrolloff = 15
 
 if vim.g.neovide then
   vim.g.neovide_opacity = 0.9

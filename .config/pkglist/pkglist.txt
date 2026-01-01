@@ -92,5 +92,7 @@ xdg-desktop-portal-gtk
 xorg-xwayland
 xwayland-satellite
 yazi
+zathura
+zathura-pdf-mupdf
 zen-browser
 zoxide
