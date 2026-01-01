@@ -1,0 +1,63 @@
+# -----------------------------------
+# 1. 基础体验 (Quality of Life)
+# -----------------------------------
+
+# 退出时不提示确认 (比如正在运行的进程)
+set confirm off
+
+#哪怕输出很长也不要分页 (不用按回车翻页，适合大屏)
+set pagination off
+
+# 允许 GDB 自动下载源码（如果可用）
+set source open on
+
+# -----------------------------------
+# 2. 历史记录 (Clean Home)
+# -----------------------------------
+
+# 开启命令历史保存
+set history save on
+
+# 设置历史记录文件大小 (条目数)
+set history size 10000
+
+#移除重复的历史记录
+set history remove-duplicates 1
+
+# 将历史记录文件也藏在 config 目录下，保持 Home 目录干净
+set history filename ~/.config/gdb/.gdb_history
+
+# -----------------------------------
+# 3. 反汇编与显示习惯 (Disassembly)
+# -----------------------------------
+
+# 使用 Intel 语法 (mov dst, src)，大多数 Pwn/RE 选手的标配
+# 默认是 AT&T (有 % 符号的那种)
+set disassembly-flavor intel
+
+# 自动反解 C++ 符号 (把乱码一样的函数名变回人类可读)
+set print asm-demangle on
+
+# 打印数组时更漂亮一点
+set print pretty on
+
+# -----------------------------------
+# 4. 调试行为 (Behavior)
+# -----------------------------------
+
+# 默认关闭 ASLR (地址随机化)
+# 这样每次调试时的地址都是固定的，方便复现 Exploit
+set disable-randomization on
+
+# 允许 GDB 调试多线程/Fork 进程
+set detach-on-fork off
+# 默认跟随父进程 (根据需要可以改为 child)
+set follow-fork-mode parent
+
+# -----------------------------------
+# 5. Arch Linux 特供 (Debuginfod)
+# -----------------------------------
+
+# 允许 GDB 联网自动下载缺失的调试符号 (glibc, libstdc++ 等)
+# 当你在调试系统库时，这个功能是神技
+set debuginfod enabled on

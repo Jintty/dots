@@ -62,6 +62,8 @@ pavucontrol
 pipewire-alsa
 pipewire-pulse
 polkit-gnome
+pwndbg
+python-hatchling
 rime-ice-git
 ripgrep
 rofi

@@ -46,3 +46,7 @@ function wifi
         end
     end
 end
+
+# --- GDB Modes (XDG Config) ---
+alias gef='gdb -q -x ~/.config/gdb/gef.gdb'
+alias pwn='gdb -q -x ~/.config/gdb/pwndbg.gdb'
