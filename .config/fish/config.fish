@@ -50,3 +50,11 @@ end
 # --- GDB Modes (XDG Config) ---
 alias gef='gdb -q -x ~/.config/gdb/gef.gdb'
 alias pwn='gdb -q -x ~/.config/gdb/pwndbg.gdb'
+
+# ZVM
+set -gx ZVM_INSTALL "$HOME/.zvm/self"
+set -gx PATH $PATH "$HOME/.zvm/bin"
+set -gx PATH $PATH "$ZVM_INSTALL/"
+
+# list fonts
+alias lsfonts='fc-list --format="%{family[0]}\n" | sort -u | fzf'
