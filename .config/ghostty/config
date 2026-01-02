@@ -1,5 +1,6 @@
 font-size = 13
-font-family = "Fira Code Nerd Font Mono"
+font-family = "Fira Code Retina"
+font-family = "Symbols Nerd Font Mono"
 font-family = "Sarasa Term SC"
 
 theme = "Catppuccin Mocha"
