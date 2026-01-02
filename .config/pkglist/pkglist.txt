@@ -75,6 +75,7 @@ telegram-desktop
 terminus-font
 tlp
 tmux
+translate-shell
 tree
 ttf-dejavu
 ttf-lxgw-wenkai
