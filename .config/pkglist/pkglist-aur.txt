@@ -3,3 +3,4 @@ getnf
 localsend-bin
 mihomo-party-bin
 swaylock-effects-git
+ttf-iosevka

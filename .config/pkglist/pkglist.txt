@@ -36,6 +36,7 @@ greetd
 greetd-tuigreet
 grub
 imagemagick
+kanshi
 lazygit
 linux
 linux-firmware
@@ -76,6 +77,7 @@ terminus-font
 tlp
 tmux
 translate-shell
+trash-cli
 tree
 ttf-dejavu
 ttf-lxgw-wenkai

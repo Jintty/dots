@@ -2,7 +2,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-set fish_greeting "~0.o~"
+set fish_greeting "Hi, Jin."
 
 zoxide init fish | source
 direnv hook fish | source

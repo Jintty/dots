@@ -1,7 +1,7 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: "Sarasa UI SC", "Maple Mono SC NF", sans-serif; /* 使用你之前的字体 */
+    font-family: "Maple Mono SC NF"; /* 使用你之前的字体 */
     font-size: 14px;
     min-height: 0;
 }

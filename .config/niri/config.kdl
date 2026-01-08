@@ -75,7 +75,7 @@ input {
     // for the resolution.
     // If the mode is omitted altogether or is invalid, niri will pick one automatically.
     // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-    mode "1920x1080@120.030"
+    mode "1920x1080@60.049"
 
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
     scale 1.25
@@ -97,11 +97,14 @@ input {
 }
 
 output "HDMI-A-1" {
-    // 【关键】强制指定分辨率和刷新率
-    // 格式必须严格匹配 `niri msg outputs` 里显示的 Available modes
     mode "2560x1440@119.998"
     scale 1.0
     position x=1920 y=0
+}
+
+output "DP-2" {
+  mode "2560x1440@59.951"
+  scale 1.0
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -271,11 +274,12 @@ spawn-at-startup "fcitx5" "-d"
 spawn-at-startup "mako"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup "clash-party"
-spawn-at-startup "swaybg" "-i" "/home/Aura/Pictures/1395756.png" "-m" "fill"
+spawn-at-startup "swaybg" "-i" "/home/Aura/Pictures/wallpapers/1395756.png" "-m" "fill"
 spawn-at-startup "swayidle" "-w" \
     "timeout" "300" "swaylock -f" \
     "timeout" "600" "systemctl suspend" \
     "before-sleep" "swaylock -f"
+spawn-at-startup "kanshi"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
