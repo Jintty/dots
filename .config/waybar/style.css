@@ -1,76 +1,135 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: "Maple Mono SC NF"; /* 使用你之前的字体 */
-    font-size: 14px;
+    font-family: "Maple Mono SC NF";
+    font-size: 13px;
+    /* font-weight: bold; */
     min-height: 0;
+    
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 window#waybar {
-    background: rgba(30, 30, 46, 0.8); /* 半透明深色背景 */
+    /* 背景色：深色蓝紫，透明度 0.3 (30% 不透明) 
+       如果觉得太透，把 0.3 改成 0.5 或 0.6
+    */
+    background: rgba(30, 30, 46, 0.75); 
+    
     color: #cdd6f4;
-    border-bottom: 2px solid #cba6f7; /* 底部加一条骚气的紫线 */
+    border-bottom: 2px solid #cba6f7;
 }
 
+
 #workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
-    color: #cdd6f4;
+    padding: 0 4px;
+    color: #6c7086; /* 未选中的工作区颜色稍微暗淡一点 */
 }
 
 #workspaces button.active {
+    color: #cba6f7; /* 选中的保持骚气紫 */
+}
+
+/* --- 核心部分：利用颜色区分模块 --- */
+
+/* 1. 音频 (蓝色系) */
+#pulseaudio {
+    color: #89b4fa;
+}
+#pulseaudio.muted {
+    color: #a6adc8; /* 静音变灰 */
+}
+
+/* 2. 麦克风 (粉色系) */
+#pulseaudio.microphone {
+    color: #f5c2e7;
+}
+
+/* 3. 网络 (紫色/淡紫) - 对应你的 Net: essid */
+#network {
     color: #cba6f7;
 }
-
-#clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#custom-media,
-#tray,
-#mode,
-#idle_inhibitor,
-#mpd,
-#pulseaudio.microphone
-
-
-#custom-notification {
-    padding: 0 10px;
-    margin: 4px 2px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
+#network.disconnected {
+    color: #f38ba8;
 }
 
-#clock {
-    background-color: transparent;
-    font-weight: bold;
+/* 4. 温度 (桃红/橙色) */
+#temperature {
+    color: #fab387;
+}
+#temperature.critical {
+    color: #f38ba8;
 }
 
-#battery.charging {
-    color: #a6e3a1;
+/* 5. CPU (红色系/栗色) */
+#cpu {
+    color: #eba0ac;
 }
 
-#battery.warning:not(.charging) {
+/* 6. 内存 (黄色) */
+#memory {
     color: #f9e2af;
 }
 
+/* 7. 电池 (根据状态变色) */
+/* 正常状态 */
+#battery {
+    color: #a6e3a1; /* 绿色 */
+}
+
+/* 充电状态 - 保持和你现在的配色一致，或者换个更亮的颜色 */
+#battery.charging {
+    color: #94e2d5; /* 青色 */
+}
+
+/* 低电量 (Warning) 
+   如果你对黄色/绿色分辨不清，可以忽略颜色，依靠上面的 [-] 符号
+*/
+#battery.warning:not(.charging) {
+    color: #f9e2af; 
+}
+
+/* 极低电量 (Critical) - 重点！
+   这里保留了 blink (闪烁) 动画。
+   无论颜色如何，只要看到文字在闪，就知道该找充电器了。
+*/
 #battery.critical:not(.charging) {
     color: #f38ba8;
     animation-name: blink;
-    animation-duration: 0.5s;
+    animation-duration: 0.5s; /* 闪烁速度：0.5秒一次 */
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
 
+/* 8. 时钟 (白色或淡蓝) */
+#clock {
+    color: #cdd6f4;
+}
+
+/* 9. 通知 */
+#custom-notification {
+    color: #b4befe;
+}
+
+/* 通用间距设置 */
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#network,
+#pulseaudio,
+#pulseaudio.microphone,
+#tray,
+#custom-notification {
+    padding: 0 6px;
+    margin: 0;
+    background-color: transparent;
+}
+
 @keyframes blink {
     to {
-        background-color: #f38ba8;
         color: #1e1e2e;
+        background-color: #f38ba8;
     }
 }

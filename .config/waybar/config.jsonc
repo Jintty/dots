@@ -1,8 +1,8 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 36,
-  "spacing": 3,
+  "height": 26,
+  "spacing": 4, // 稍微给一点点间距，因为文字比图标更需要呼吸感
   "modules-left": [
     "niri/workspaces",
     "niri/window"
@@ -24,55 +24,43 @@
   "niri/workspaces": {
     "format": "{icon}",
     "format-icons": {
-      "active": "",
-      "default": ""
+      // 将圆点改为更加字符化的表现形式，或者保持圆点也很简洁
+      "active": "[#]",
+      "default": " - "
     }
   },
   "niri/window": {
-    "format": "{title}",
+    "format": "[ {title} ]", // 给标题加个括号，更有终端感
     "max-length": 40,
     "rewrite": {
-      "(.*) - Zen Browser": "Zen Browser",
-      "(.*) - Visual Studio Code": "VS Code"
+      "(.*) - Zen Browser": "Zen",
+      "(.*) - Visual Studio Code": "Code"
     }
   },
   "clock": {
     "interval": 1,
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format": " {:%H:%M:%S   %m-%d}"
+    "tooltip-format": "{calendar}",
+    "format": "{:%H:%M  %m/%d}" // 纯数字时间日期
   },
   "cpu": {
     "interval": 1,
-    "format": "  {usage}%",
+    "format": "CPU: {usage}%", // 纯文字
     "tooltip": false
   },
   "memory": {
     "interval": 2,
-    "format": "  {}%"
+    "format": "RAM: {}%"
   },
   "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "format-muted": " Muted",
-    "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": [
-        "",
-        "",
-        ""
-      ]
-    },
+    "format": "VOL: {volume}%",
+    "format-muted": "VOL: Muted",
     "on-click": "pavucontrol"
   },
   "network": {
     "interval": 5,
-    "format-wifi": "   {essid}",
-    "format-ethernet": " Eth",
-    "format-disconnected": "⚠ Off",
+    "format-wifi": "NET: {essid}", // 你想要的格式
+    "format-ethernet": "NET: Eth",
+    "format-disconnected": "NET: Off",
     "tooltip-format": "{ifname} via {gwaddr}",
     "on-click": "nm-connection-editor"
   },
@@ -82,46 +70,39 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon}  {capacity}%",
-    "format-charging": "  {capacity}%",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
+    // 1. 放电状态 (Discharging)
+    "format": "[-] {capacity}%",
+    // 2. 充电状态 (Charging)
+    "format-charging": "[+] {capacity}%",
+    // 3. 满电/插电维持状态 (Plugged)
+    // 当电池充满但还插着电源时，显示 [=] 表示"平衡/满电"
+    "format-plugged": "[=] {capacity}%",
+    // 如果你还需要针对特定低电量修改文字，也可以加：
+    // "format-critical": "[!] {capacity}%", // 只有在极低电量时显示惊叹号
   },
   "tray": {
-    "icon-size": 18,
-    "spacing": 10
+    "icon-size": 14,
+    "spacing": 8
   },
   "custom/notification": {
-    "format": " ",
+    "format": "NOTIF", // 文字代替铃铛
     "on-click": "makoctl dismiss",
     "on-click-right": "makoctl mode -t dnd",
     "tooltip": false
   },
   "temperature": {
-    // "thermal-zone": 0,  // 如果显示不准，可能需要调整这个数字
-    // "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input", // 终极大法：直接指定文件路径
-    "critical-threshold": 80, // 超过80度变红
-    "format-critical": "{temperatureC}°C {icon}", // 高温时的显示格式
-    "format": "{temperatureC}°C {icon}", // 正常时的显示格式
-    "format-icons": [
-      "🥶",
-      "",
-      "🥵"
-    ], // 图标：冷、中、热
+    "critical-threshold": 80,
+    "format-critical": "TMP: {temperatureC}°C",
+    "format": "TMP: {temperatureC}°C",
     "interval": 2
   },
   "pulseaudio#microphone": {
     "format": "{format_source}",
-    "format-source": " {volume}%",
-    "format-source-muted": " Muted",
+    "format-source": "MIC: {volume}%",
+    "format-source-muted": "MIC: Muted",
     "on-click": "~/.config/niri/scripts/mic-toggle.sh",
     "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%+",
     "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-",
     "scroll-step": 5
-  },
+  }
 }
