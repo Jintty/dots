@@ -23,6 +23,14 @@ return {
           merge = true,
           replace = true,
         },
+        hover = {
+          win_options = {
+            winhighlight = {
+              Normal = "Normal",
+              FloatBorder = "Normal",
+            },
+          },
+        },
       },
     },
   },

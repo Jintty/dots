@@ -1,9 +1,14 @@
 # ~/.config/zathura/zathurarc
 
+# 0. UI 字体设置 (关键修改)
+# 格式：set font "字体名称 字号"
+# 建议：使用和你终端一致的字体，15px 适配 2K 屏
+set font "Maple Mono SC NF 15"
+
 # 1. 基础设置
-set selection-clipboard clipboard  # 让选中的文字直接进系统剪贴板
-set adjust-open width              # 打开文件时默认适应宽度
-set statusbar-home-tilde true      # 状态栏显示 ~ 而不是 /home/user
+set selection-clipboard clipboard   # 让选中的文字直接进系统剪贴板
+set adjust-open width               # 打开文件时默认适应宽度
+set statusbar-home-tilde true       # 状态栏显示 ~ 而不是 /home/user
 
 # 2. 启用平滑滚动 (看个人喜好)
 set smooth-scroll true
@@ -23,7 +28,7 @@ set notification-error-fg "#11111b"
 set notification-warning-bg "#fab387"
 set notification-warning-fg "#11111b"
 
-set highlight-color "#f5c2e7"      # 搜索高亮颜色 (Pink)
+set highlight-color "#f5c2e7"       # 搜索高亮颜色 (Pink)
 set highlight-active-color "#94e2d5" # 当前选中高亮 (Teal)
 
 set completion-bg "#313244"
@@ -34,4 +39,4 @@ set completion-highlight-fg "#cdd6f4"
 # 4. 反色模式下的颜色配置 (Ctrl+r 时生效)
 set recolor-lightcolor "#1e1e2e"   # 背景变黑
 set recolor-darkcolor "#cdd6f4"    # 文字变白
-set recolor "false"                # 默认不开启
+set recolor "true"                # 默认不开启

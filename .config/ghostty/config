@@ -1,11 +1,11 @@
-font-size = 12
-font-family = "Fira Code Retina"
+font-size = 13
+font-family = "Fira Code"
 font-family = "Symbols Nerd Font Mono"
 font-family = "Sarasa Term SC"
 
 theme = "Catppuccin Mocha"
 
-background-opacity = 0.75
+background-opacity = 0.9
 
 window-decoration = false
 

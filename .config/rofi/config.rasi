@@ -7,7 +7,7 @@ configuration {
     drun-display-format:        "{name}";
     window-format:              "{w} · {c} · {t}";
     
-    font:                       "LXGW Wenkai Medium 14"; 
+    font:                       "Fira Code 12"; 
 }
 
 /* --- 全局样式 --- */
