@@ -5,6 +5,7 @@ return {
     priority = 1000,
     opts = {
       preset = "ghost",
+      transparent_bg = true,
     },
   },
   {

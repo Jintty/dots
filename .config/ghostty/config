@@ -5,7 +5,7 @@ font-family = "Sarasa Term SC"
 
 theme = "Catppuccin Mocha"
 
-background-opacity = 0.9
+background-opacity = 0.8
 
 window-decoration = false
 
