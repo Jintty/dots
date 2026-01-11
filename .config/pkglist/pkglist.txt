@@ -9,6 +9,7 @@ bat
 brightnessctl
 btop
 clang
+cmake
 direnv
 dmidecode
 efibootmgr
