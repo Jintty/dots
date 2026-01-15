@@ -87,6 +87,7 @@ ttf-maplemono-nf-cn-unhinted
 ttf-sarasa-gothic
 unarchiver
 unzip
+usbmuxd
 vlc
 vulkan-radeon
 waybar
