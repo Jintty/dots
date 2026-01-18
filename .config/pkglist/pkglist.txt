@@ -2,12 +2,15 @@
 acpi_call
 alsa-utils
 amd-ucode
+anki
 archlinuxcn-keyring
 base
 base-devel
 bat
 brightnessctl
 btop
+cataclysm-dda
+cataclysm-dda-tiles
 clang
 cmake
 direnv
@@ -49,6 +52,7 @@ man-pages
 mesa
 neovide
 neovim
+nethack
 networkmanager
 niri
 noto-fonts-cjk
@@ -71,6 +75,7 @@ rime-ice-git
 ripgrep
 rofi
 rustup
+steam
 sudo
 swaybg
 swayidle
@@ -82,6 +87,7 @@ translate-shell
 trash-cli
 tree
 ttf-dejavu
+ttf-jetbrains-mono
 ttf-lxgw-wenkai
 ttf-maplemono-nf-cn-unhinted
 ttf-sarasa-gothic

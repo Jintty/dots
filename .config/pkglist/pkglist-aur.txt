@@ -1,5 +1,6 @@
 gef-git
 getnf
+linuxqq
 localsend-bin
 mihomo-party-bin
 swaylock-effects-git
