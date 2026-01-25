@@ -75,7 +75,6 @@ return {
     "folke/snacks.nvim",
     ---@type snacks.Config
     opts = {
-      -- ... 保持你之前的 picker, explorer, terminal 配置不变 ...
       picker = {
         backdrop = false,
         sources = {
@@ -90,7 +89,6 @@ return {
         win = { wo = { winhighlight = "Normal:Normal,FloatBorder:Normal" } },
       },
       dashboard = {
-        -- 启用 dashboard
         enabled = true,
         preset = {
           -- stylua: ignore

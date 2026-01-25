@@ -14,6 +14,7 @@ cataclysm-dda-tiles
 clang
 cmake
 direnv
+discord
 dmidecode
 efibootmgr
 fastfetch
@@ -36,6 +37,7 @@ gdu
 ghostty
 git
 glu
+goldendict-ng
 greetd
 greetd-tuigreet
 grub
@@ -46,6 +48,7 @@ libva-utils
 linux
 linux-firmware
 lsd
+lshw
 mako
 man-db
 man-pages
@@ -74,8 +77,6 @@ python-hatchling
 rime-ice-git
 ripgrep
 rofi
-rustup
-steam
 sudo
 swaybg
 swayidle

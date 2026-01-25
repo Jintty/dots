@@ -10,8 +10,8 @@ background-opacity = 0.8
 window-decoration = false
 
 cursor-style = block
-cursor-style-blink = false
 mouse-hide-while-typing = true
 shell-integration-features = no-cursor
+cursor-style-blink = false
 
 custom-shader = shaders/cursor_warp.glsl

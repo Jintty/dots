@@ -47,7 +47,7 @@
       "type": "display",
       "key": "󰍹 Res",
       "keyColor": "magenta",
-      "compactType": "original"
+      "format": "{1}x{2} @ {3}Hz"
     },
     {
       "type": "wm",
@@ -68,7 +68,7 @@
       "type": "gpu",
       "key": " GPU",
       "keyColor": "green",
-      "format": "{2}",
+      "format": "{2}"
     },
     {
       "type": "memory",
