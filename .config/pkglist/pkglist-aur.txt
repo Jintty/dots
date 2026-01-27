@@ -4,3 +4,7 @@ localsend-bin
 mihomo-party-bin
 swaylock-effects-git
 ttf-iosevka
+ttf-lxgw-wenkai-screen
+ttf-meslo-nerd-font-powerlevel10k
+ttf-mononoki-git
+ttf-recursive

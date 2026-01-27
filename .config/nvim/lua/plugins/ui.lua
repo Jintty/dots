@@ -14,7 +14,7 @@ return {
     opts = {
       transparent_background = true,
       term_colors = true,
-      no_italic = true,
+      no_italic = false,
       integrations = {
         aerial = true,
         alpha = true,

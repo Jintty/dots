@@ -13,6 +13,7 @@ cataclysm-dda
 cataclysm-dda-tiles
 clang
 cmake
+code
 direnv
 discord
 dmidecode
@@ -38,8 +39,6 @@ ghostty
 git
 glu
 goldendict-ng
-greetd
-greetd-tuigreet
 grub
 imagemagick
 kanshi
@@ -49,6 +48,7 @@ linux
 linux-firmware
 lsd
 lshw
+ly
 mako
 man-db
 man-pages
@@ -57,6 +57,7 @@ neovide
 neovim
 nethack
 networkmanager
+newsboat
 niri
 noto-fonts-cjk
 noto-fonts-emoji
@@ -74,6 +75,7 @@ pipewire-pulse
 polkit-gnome
 pwndbg
 python-hatchling
+racket
 rime-ice-git
 ripgrep
 rofi
@@ -82,12 +84,15 @@ swaybg
 swayidle
 telegram-desktop
 terminus-font
+texlive-langchinese
+texlive-meta
 tlp
 tmux
 translate-shell
 trash-cli
 tree
 ttf-dejavu
+ttf-fantasque-sans-mono
 ttf-jetbrains-mono
 ttf-lxgw-wenkai
 ttf-maplemono-nf-cn-unhinted

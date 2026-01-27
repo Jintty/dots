@@ -1,7 +1,9 @@
-font-size = 13
-font-family = "Fira Code"
+font-size = 14
+font-family = "Mononoki"
 font-family = "Symbols Nerd Font Mono"
-font-family = "Sarasa Term SC"
+font-family = "LXGW WenKai Mono GB Screen"
+font-thicken = true
+adjust-cell-height = 2
 
 theme = "Catppuccin Mocha"
 

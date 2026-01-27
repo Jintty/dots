@@ -9,6 +9,7 @@ set font "Maple Mono SC NF 15"
 set selection-clipboard clipboard   # 让选中的文字直接进系统剪贴板
 set adjust-open width               # 打开文件时默认适应宽度
 set statusbar-home-tilde true       # 状态栏显示 ~ 而不是 /home/user
+set synctex-editor-command "nvr --remote-silent +%{line} %{input}"
 
 # 2. 启用平滑滚动 (看个人喜好)
 set smooth-scroll true
