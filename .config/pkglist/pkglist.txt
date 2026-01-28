@@ -3,6 +3,7 @@ acpi_call
 alsa-utils
 amd-ucode
 anki
+arch-audit
 archlinuxcn-keyring
 base
 base-devel

@@ -166,4 +166,51 @@ ___ _____ _   _   _    ___ ___   ___  _    ___ ___ _  _
       end
     end,
   },
+  {
+    "nvim-lualine/lualine.nvim",
+    opts = function(_, opts)
+      -- 1. 引入 Catppuccin 调色盘，我们需要用到它的深灰色
+      -- 注意：这里假设你用的是 mocha 主题，如果你用 macchiato 请自行替换
+      local C = require("catppuccin.palettes").get_palette("mocha") or {}
+
+      -- 2. 依然保持极简的分隔符设置
+      opts.options.section_separators = { left = "", right = "" }
+      opts.options.component_separators = { left = "->", right = "<-" }
+
+      -- 3. 核心魔法：选择性透明
+      local custom_theme = require("lualine.themes.auto")
+
+      -- 遍历所有模式 (normal, insert, visual, etc.)
+      for _, mode in pairs(custom_theme) do
+        -- 遍历模式下的所有区域 (a, b, c, x, y, z)
+        -- a: 模式 (左一)
+        -- b: 分支 (左二)
+        -- c: 文件名 (左三)
+        -- x: 编码/格式 (右三)
+        -- y: 进度 (右二)
+        -- z: 时间/位置 (右一)
+        for section_name, section in pairs(mode) do
+          if section_name == "a" then
+            -- 【修复左侧】：Vim 模式块
+            -- 不设为 NONE，而是设为 Surface0 (深灰)，作为垫底
+            -- 这样它看起来像是一个深色的悬浮按钮，而不是刺眼的亮色块
+            section.bg = C.surface0
+            section.fg = C.blue -- 强制文字为蓝色 (或者保持默认，随模式变色)
+            section.gui = "bold"
+          elseif section_name == "z" then
+            -- 【修复右侧】：时间/位置块
+            -- 同样垫一层深灰色背景
+            section.bg = C.surface0
+            section.gui = "bold"
+          else
+            -- 【中间保持透明】：b, c, x, y 全部透明
+            section.bg = "NONE"
+          end
+        end
+      end
+
+      -- 4. 应用修改后的主题
+      opts.options.theme = custom_theme
+    end,
+  },
 }
