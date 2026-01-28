@@ -13,6 +13,7 @@
   "modules-right": [
     "pulseaudio",
     "pulseaudio#microphone",
+    "backlight",
     "network",
     "temperature",
     "cpu",
@@ -103,5 +104,18 @@
     "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%+",
     "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-",
     "scroll-step": 5
+  },
+  "backlight": {
+    // 你的 ThinkPad AMD 显卡背光设备通常是 amdgpu_bl0，
+    // 如果不指定，waybar 通常也能自动识别。
+    // "device": "amdgpu_bl0", 
+    "format": "BRI:{percent}%", // 保持你的 BRI:50% 纯文字风格
+    "tooltip": false, // 你不喜欢 tooltip，关掉
+    // 滚轮调节亮度：需要安装 brightnessctl
+    "on-scroll-up": "brightnessctl set +5%",
+    "on-scroll-down": "brightnessctl set 5%-",
+    // 点击切换最大/最小亮度（可选的小功能）
+    // "on-click": "brightnessctl set 100%",
+    // "on-click-right": "brightnessctl set 5%"
   }
 }

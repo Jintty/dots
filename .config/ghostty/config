@@ -1,9 +1,10 @@
-font-size = 14
-font-family = "Mononoki"
+font-size = 13
+
+font-family = "Maple Mono"
 font-family = "Symbols Nerd Font Mono"
 font-family = "LXGW WenKai Mono GB Screen"
+
 font-thicken = true
-adjust-cell-height = 2
 
 theme = "Catppuccin Mocha"
 

@@ -111,6 +111,12 @@ window#waybar {
     color: #b4befe;
 }
 
+/* 10. 亮度 */
+#backlight {
+    color: #94e2d5; /* Catppuccin Teal */
+    padding: 0 8px; /* 保持和其他模块一样的间距 */
+}
+
 /* 通用间距设置 */
 #clock,
 #battery,

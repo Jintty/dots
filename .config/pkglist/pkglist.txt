@@ -13,7 +13,6 @@ cataclysm-dda
 cataclysm-dda-tiles
 clang
 cmake
-code
 direnv
 discord
 dmidecode
@@ -84,8 +83,6 @@ swaybg
 swayidle
 telegram-desktop
 terminus-font
-texlive-langchinese
-texlive-meta
 tlp
 tmux
 translate-shell
