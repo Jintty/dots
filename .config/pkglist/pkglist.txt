@@ -41,6 +41,7 @@ glu
 goldendict-ng
 grub
 imagemagick
+jdk-openjdk
 kanshi
 lazygit
 libva-utils
