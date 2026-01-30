@@ -8,7 +8,8 @@
     "niri/window"
   ],
   "modules-center": [
-    "clock"
+    "clock",
+    "custom/animation"
   ],
   "modules-right": [
     "pulseaudio",
@@ -89,6 +90,13 @@
     "on-click": "makoctl dismiss",
     "on-click-right": "makoctl mode -t dnd",
     "tooltip": false
+  },
+  "custom/animation": {
+    "exec": "~/.config/waybar/scripts/animate.sh ghost",
+    "interval": "persist",
+    "format": "{}",
+    "tooltip": false,
+    "on-click": "notify-send '󰊠' 'Shh... The ghost is AFK.'"
   },
   "temperature": {
     "critical-threshold": 80,

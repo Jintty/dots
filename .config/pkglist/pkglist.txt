@@ -99,7 +99,6 @@ typst
 unarchiver
 unzip
 usbmuxd
-vlc
 vulkan-radeon
 waybar
 wget

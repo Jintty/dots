@@ -1,7 +1,7 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: "Monaspace Krypton Var";
+    font-family: "Monaspace Neon Var", "Symbols Nerd Font Mono";
     font-size: 13px;
     font-weight: bold;
     min-height: 0;
@@ -115,6 +115,27 @@ window#waybar {
 #backlight {
     color: #94e2d5; /* Catppuccin Teal */
     padding: 0 8px; /* 保持和其他模块一样的间距 */
+}
+
+
+/* 11. 赛博风水 */
+#custom-animation {
+    color: #b4befe; 
+    
+    /* 1. 移除之前的左右 padding，改用 min-width 控制 */
+    /* padding-left: 10px; */ 
+    /* padding-right: 15px; */
+    padding: 0 10px; /* 给左右各留一点点缝隙即可 */
+
+    /* 2. 【核心修复】强制锁定最小宽度 */
+    /* 你需要根据你的屏幕实际情况微调这个数字 */
+    /* 试着从 80px 开始，如果太大就改小，直到刚好放下最长的 "zzZ" */
+    min-width: 80px;
+
+    /* 3. 字体配置 */
+    font-family: "Monaspace Argon Var", "Symbols Nerd Font Mono";
+    font-size: 16px; 
+    font-weight: bold;
 }
 
 /* 通用间距设置 */
