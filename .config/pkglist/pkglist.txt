@@ -15,7 +15,6 @@ cataclysm-dda-tiles
 clang
 cmake
 direnv
-discord
 dmidecode
 efibootmgr
 fastfetch
@@ -30,6 +29,7 @@ fcitx5-rime
 fd
 ffmpegthumbnailer
 fish
+flatpak
 fuse2
 fuzzel
 fzf
@@ -83,7 +83,6 @@ rofi
 sudo
 swaybg
 swayidle
-telegram-desktop
 terminus-font
 tlp
 tmux
@@ -96,6 +95,7 @@ ttf-jetbrains-mono
 ttf-lxgw-wenkai
 ttf-maplemono-nf-cn-unhinted
 ttf-sarasa-gothic
+typst
 unarchiver
 unzip
 usbmuxd
