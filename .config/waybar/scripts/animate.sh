@@ -7,7 +7,7 @@ MODE=${1:-ghost}
 if [ "$MODE" == "pacman" ]; then
   icon="ᗧ" # 吃豆人
 elif [ "$MODE" == "ghost" ]; then
-  icon="󰊠" # 幽灵 (Nerd Font)
+  icon="󱙝" # 幽灵 (Nerd Font)
   # icon="👻" # 如果你喜欢 Emoji 版本
 else
   icon="😽" # 保留猫咪作为彩蛋

@@ -2,12 +2,12 @@
 acpi_call
 alsa-utils
 amd-ucode
-anki
 arch-audit
 archlinuxcn-keyring
 base
 base-devel
 bat
+bear
 brightnessctl
 btop
 cataclysm-dda
@@ -64,7 +64,6 @@ noto-fonts-cjk
 noto-fonts-emoji
 npm
 nwg-look
-obsidian
 openssh
 pacman-contrib
 papirus-icon-theme
@@ -76,6 +75,7 @@ pipewire-pulse
 polkit-gnome
 pwndbg
 python-hatchling
+qt6ct
 racket
 rime-ice-git
 ripgrep
@@ -112,5 +112,6 @@ xwayland-satellite
 yazi
 zathura
 zathura-pdf-mupdf
+zeal
 zen-browser
 zoxide
