@@ -1,0 +1,9 @@
+profile {
+    output eDP-1 enable mode 1920x1080@60.049 scale 1.25
+}
+
+profile {
+    output eDP-1 disable
+
+    output "Dell Inc. DELL S2721DGF 6MH9DH3" enable mode 2560x1440@119.998 position 0,0 scale 1
+}
