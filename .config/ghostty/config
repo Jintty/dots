@@ -6,7 +6,7 @@ font-family = "LXGW WenKai Mono GB Screen"
 
 font-feature = calt, liga, dlig, ss01, ss02, ss03, ss06, ss09
 adjust-cell-width = -5%
-adjust-cell-height = 20%
+adjust-cell-height = 15%
 
 theme = "Catppuccin Mocha"
 

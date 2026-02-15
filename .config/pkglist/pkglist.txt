@@ -55,6 +55,7 @@ mako
 man-db
 man-pages
 mesa
+mpv
 neovide
 neovim
 nethack
@@ -96,6 +97,7 @@ ttf-jetbrains-mono
 ttf-lxgw-wenkai
 ttf-maplemono-nf-cn-unhinted
 ttf-sarasa-gothic
+ttf-ubuntu-font-family
 typst
 unarchiver
 unzip
@@ -111,6 +113,7 @@ xdg-desktop-portal-gtk
 xorg-xwayland
 xwayland-satellite
 yazi
+yt-dlp
 zathura
 zathura-pdf-mupdf
 zeal

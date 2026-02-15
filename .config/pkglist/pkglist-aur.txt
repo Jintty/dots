@@ -1,3 +1,4 @@
+calibre-bin
 gef-git
 getnf
 mihomo-party-bin
