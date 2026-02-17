@@ -61,6 +61,7 @@ neovim
 nethack
 networkmanager
 newsboat
+nheko-git
 niri
 noto-fonts-cjk
 noto-fonts-emoji
@@ -92,7 +93,6 @@ translate-shell
 trash-cli
 tree
 ttf-dejavu
-ttf-fantasque-sans-mono
 ttf-jetbrains-mono
 ttf-lxgw-wenkai
 ttf-maplemono-nf-cn-unhinted

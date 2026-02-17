@@ -21,11 +21,12 @@ input {
     touchpad {
         // off
         tap
-        // dwt
+        dwt
+        // scroll-factor 2
         // dwtp
         // drag false
         // drag-lock
-        // natural-scroll
+        natural-scroll
         // accel-speed 0.2
         // accel-profile "flat"
         // scroll-method "two-finger"
@@ -310,6 +311,14 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 animations {
     // Uncomment to turn off all animations.
     // off
+    window-open {
+        duration-ms 200
+        curve "ease-out-expo"
+    }
+    workspace-switch {
+        duration-ms 250
+        curve "ease-out-quad"
+    }
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
     // slowdown 3.0

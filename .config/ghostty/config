@@ -1,22 +1,42 @@
 font-size = 12
 
-font-family = "Monaspace Argon Var"
-font-family = "Symbols Nerd Font Mono"
-font-family = "LXGW WenKai Mono GB Screen"
+font-family = "Recursive"
 
-font-feature = calt, liga, dlig, ss01, ss02, ss03, ss06, ss09
-adjust-cell-width = -5%
-adjust-cell-height = 15%
+# === 常规字体 (Regular) ===
+# 每一行设置一个参数
+font-variation = wght=400
+font-variation = MONO=1
+font-variation = CASL=1
+# 如果你不想要斜度，也可以加上 slnt=0，通常不需要
+font-variation = slnt=0
+
+# === 粗体 (Bold) ===
+# 必须重新声明 MONO 和 CASL，否则可能会回退到默认值
+font-variation-bold = wght=700
+font-variation-bold = MONO=1
+font-variation-bold = CASL=1
+
+# === 斜体 (Italic) ===
+# 这里可以开启“休闲风格” (CASL=1)
+font-variation-italic = wght=400
+font-variation-italic = MONO=1
+font-variation-italic = CASL=1
+font-variation-italic = slnt=-7
+
+# === 粗斜体 (Bold Italic) ===
+font-variation-bold-italic = wght=700
+font-variation-bold-italic = MONO=1
+font-variation-bold-italic = CASL=1
+font-variation-bold-italic = slnt=-15
+
+font-feature = calt, ss01, ss04, ss12
 
 theme = "Catppuccin Mocha"
-
 background-opacity = 0.8
-
 window-decoration = false
-
 cursor-style = block
-mouse-hide-while-typing = true
 shell-integration-features = no-cursor
 cursor-style-blink = false
+mouse-hide-while-typing = true
 
 custom-shader = shaders/cursor_warp.glsl
