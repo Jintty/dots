@@ -40,4 +40,4 @@ set completion-highlight-fg "#cdd6f4"
 # 4. 反色模式下的颜色配置 (Ctrl+r 时生效)
 set recolor-lightcolor "#1e1e2e"   # 背景变黑
 set recolor-darkcolor "#cdd6f4"    # 文字变白
-set recolor "true"                # 默认不开启
+set recolor "false"                # 默认不开启

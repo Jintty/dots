@@ -28,22 +28,31 @@ function dot
 end
 
 function wifi
-    # 1. 扫描并用 fzf 显示列表
-    # -SSID: 只显示 SSID
-    # -SECURITY: 显示加密方式
-    # -BARS: 显示信号强度
-    set -l ssid (nmcli --color=yes device wifi list | fzf --ansi --height 40% --layout=reverse --header "Select WiFi Network" | awk '{print $2}')
+    # 1. 获取列表
+    # -t: 机器可读模式 (用冒号分隔)
+    # -f: 指定字段 (SSID, 信号条, 加密)
+    # awk: 简单的格式化，让 fzf 显示得好看一点，同时保留原始 SSID 在行首以便提取
+    # 格式化后长这样: "MyWiFi  |  ▂▄▆_  |  WPA2"
+    set -l list (nmcli -t -f SSID,BARS,SECURITY device wifi list | \
+        awk -F: '{printf "%-30s  %s  %s\n", $1, $2, $3}' | \
+        fzf --height 40% --layout=reverse --header "Select WiFi (Ctrl+C to cancel)" --cycle)
+
+    if test -z "$list"
+        return
+    end
+
+    # 2. 提取 SSID (极度稳健)
+    # 逻辑：取前30个字符 -> 去掉尾部空格
+    # 因为我们在 awk 里用了 "%-30s"，所以前30位一定是 SSID (含填充空格)
+    set -l ssid (string sub -l 30 -- "$list" | string trim)
 
     if test -n "$ssid"
-        # 2. 如果选中的是已保存的网络，直接 Up
-        if nmcli connection show "$ssid" >/dev/null 2>&1
-            echo "🔄 Connecting to saved network: $ssid..."
-            nmcli connection up "$ssid"
-        else
-            # 3. 如果是新网络，尝试连接（通常会触发密码提示）
-            echo "✨ Connecting to new network: $ssid..."
-            nmcli device wifi connect "$ssid"
-        end
+        echo "Target: [$ssid]"
+
+        # 3. 连接逻辑
+        # --ask: 强制在终端询问密码，解决 "Secrets were required" 报错
+        # 加上 time 还能顺便看下连接耗时
+        time nmcli --ask device wifi connect "$ssid"
     end
 end
 
