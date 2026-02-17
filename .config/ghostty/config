@@ -31,6 +31,7 @@ font-variation-bold-italic = slnt=-15
 
 font-feature = calt, ss01, ss04, ss12
 
+
 theme = "Catppuccin Mocha"
 background-opacity = 0.8
 window-decoration = false
