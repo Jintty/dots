@@ -3,6 +3,7 @@ gef-git
 getnf
 mihomo-party-bin
 swaylock-effects-git
+ttf-0xproto
 ttf-iosevka
 ttf-lxgw-wenkai-screen
 ttf-meslo-nerd-font-powerlevel10k

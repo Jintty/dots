@@ -3,14 +3,8 @@
   "position": "top",
   "height": 26,
   "spacing": 3, // 稍微给一点点间距，因为文字比图标更需要呼吸感
-  "modules-left": [
-    "niri/workspaces",
-    "niri/window"
-  ],
-  "modules-center": [
-    "clock",
-    "custom/animation"
-  ],
+  "modules-left": ["niri/workspaces", "niri/window", "custom/animation"],
+  "modules-center": ["clock"],
   "modules-right": [
     "pulseaudio",
     "pulseaudio#microphone",
@@ -21,41 +15,41 @@
     "memory",
     "battery",
     "tray",
-    "custom/notification"
+    "custom/notification",
   ],
   "niri/workspaces": {
     "format": "{icon}",
     "format-icons": {
       // 将圆点改为更加字符化的表现形式，或者保持圆点也很简洁
-      "active": "[#]",
-      "default": " - "
-    }
+      "active": "[*]",
+      "default": " - ",
+    },
   },
   "niri/window": {
     "format": "[ {title} ]", // 给标题加个括号，更有终端感
     "max-length": 40,
     "rewrite": {
-      "(.*) - Zen Browser": "Zen"
-    }
+      "(.*) - Zen Browser": "Zen",
+    },
   },
   "clock": {
     "interval": 1,
     "tooltip-format": "{calendar}",
-    "format": "{:%H:%M  %m/%d}" // 纯数字时间日期
+    "format": "{:%H:%M:%S  %m/%d/%y}",
   },
   "cpu": {
     "interval": 1,
     "format": "CPU:{usage}%", // 纯文字
-    "tooltip": false
+    "tooltip": false,
   },
   "memory": {
     "interval": 2,
-    "format": "RAM:{}%"
+    "format": "RAM:{}%",
   },
   "pulseaudio": {
     "format": "VOL:{volume}%",
     "format-muted": "VOL: Muted",
-    "on-click": "pavucontrol"
+    "on-click": "pavucontrol",
   },
   "network": {
     "interval": 5,
@@ -63,13 +57,13 @@
     "format-ethernet": "NET:Eth",
     "format-disconnected": "NET:Off",
     "tooltip-format": "{ifname} via {gwaddr}",
-    "on-click": "nm-connection-editor"
+    "on-click": "nm-connection-editor",
   },
   "battery": {
     "interval": 1,
     "states": {
       "warning": 30,
-      "critical": 15
+      "critical": 15,
     },
     // 1. 放电状态 (Discharging)
     "format": "{capacity}%[-]",
@@ -77,32 +71,32 @@
     "format-charging": "{capacity}%[+]",
     // 3. 满电/插电维持状态 (Plugged)
     // 当电池充满但还插着电源时，显示 [=] 表示"平衡/满电"
-    "format-plugged": "{capacity}%[=]"
+    "format-plugged": "{capacity}%[=]",
     // 如果你还需要针对特定低电量修改文字，也可以加：
     // "format-critical": "[!] {capacity}%", // 只有在极低电量时显示惊叹号
   },
   "tray": {
     "icon-size": 14,
-    "spacing": 8
+    "spacing": 8,
   },
   "custom/notification": {
     "format": "NOTIF", // 文字代替铃铛
     "on-click": "makoctl dismiss",
     "on-click-right": "makoctl mode -t dnd",
-    "tooltip": false
+    "tooltip": false,
   },
   "custom/animation": {
     "exec": "~/.config/waybar/scripts/animate.sh ghost",
     "interval": "persist",
     "format": "{}",
     "tooltip": false,
-    "on-click": "notify-send '󰊠' 'Shh... The ghost is AFK.'"
+    "on-click": "notify-send '󰊠' 'Shh... The ghost is AFK.'",
   },
   "temperature": {
     "critical-threshold": 80,
     "format-critical": "TMP:{temperatureC}°C",
     "format": "TMP:{temperatureC}°C",
-    "interval": 2
+    "interval": 2,
   },
   "pulseaudio#microphone": {
     "format": "{format_source}",
@@ -111,12 +105,12 @@
     "on-click": "~/.config/niri/scripts/mic-toggle.sh",
     "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%+",
     "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-",
-    "scroll-step": 5
+    "scroll-step": 5,
   },
   "backlight": {
     // 你的 ThinkPad AMD 显卡背光设备通常是 amdgpu_bl0，
     // 如果不指定，waybar 通常也能自动识别。
-    // "device": "amdgpu_bl0", 
+    // "device": "amdgpu_bl0",
     "format": "BRI:{percent}%", // 保持你的 BRI:50% 纯文字风格
     "tooltip": false, // 你不喜欢 tooltip，关掉
     // 滚轮调节亮度：需要安装 brightnessctl
@@ -125,5 +119,5 @@
     // 点击切换最大/最小亮度（可选的小功能）
     // "on-click": "brightnessctl set 100%",
     // "on-click-right": "brightnessctl set 5%"
-  }
+  },
 }

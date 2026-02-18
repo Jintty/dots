@@ -1,91 +1,87 @@
 * {
-    border: none;
-    border-radius: 0;
-    font-family: "Source Code Pro semibold", "Symbols Nerd Font Mono";
-    font-size: 13.5px;
-    /* font-weight: bold; */
-    min-height: 0;
-    
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  border: none;
+  border-radius: 0;
+  font-family: "Source Code Pro", "Symbols Nerd Font Mono";
+  font-size: 13.5px;
+  /* font-weight: bold; */
+  min-height: 0;
+
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 window#waybar {
-    /* 背景色：深色蓝紫，透明度 0.3 (30% 不透明) 
-       如果觉得太透，把 0.3 改成 0.5 或 0.6
-    */
-    background: rgba(30, 30, 46, 0.75); 
-    
-    color: #cdd6f4;
-    border-bottom: 2px solid #cba6f7;
+  background: rgba(30, 30, 46, 0.75);
+  color: #cdd6f4;
+  border-bottom: 2px solid #cba6f7;
+  text-shadow: none; /* 移除阴影让文字在 1080P 下更锐利 */
 }
 
-
 #workspaces button {
-    padding: 0 4px;
-    color: #6c7086; /* 未选中的工作区颜色稍微暗淡一点 */
+  padding: 0 4px;
+  color: #6c7086; /* 未选中的工作区颜色稍微暗淡一点 */
 }
 
 #workspaces button.active {
-    color: #cba6f7; /* 选中的保持骚气紫 */
+  color: #cba6f7; /* 选中的保持骚气紫 */
 }
 
 /* --- 核心部分：利用颜色区分模块 --- */
 
 /* 1. 音频 (蓝色系) */
 #pulseaudio {
-    color: #89b4fa;
+  color: #89b4fa;
 }
 #pulseaudio.muted {
-    color: #a6adc8; /* 静音变灰 */
+  color: #a6adc8; /* 静音变灰 */
 }
 
 /* 2. 麦克风 (粉色系) */
 #pulseaudio.microphone {
-    color: #f5c2e7;
+  color: #f5c2e7;
 }
 
 /* 3. 网络 (紫色/淡紫) - 对应你的 Net: essid */
 #network {
-    color: #cba6f7;
+  color: #cba6f7;
 }
 #network.disconnected {
-    color: #f38ba8;
+  color: #f38ba8;
 }
 
 /* 4. 温度 (桃红/橙色) */
 #temperature {
-    color: #fab387;
+  color: #fab387;
 }
 #temperature.critical {
-    color: #f38ba8;
+  color: #f38ba8;
 }
 
 /* 5. CPU (红色系/栗色) */
 #cpu {
-    color: #eba0ac;
+  color: #eba0ac;
 }
 
 /* 6. 内存 (黄色) */
 #memory {
-    color: #f9e2af;
+  color: #f9e2af;
 }
 
 /* 7. 电池 (根据状态变色) */
 /* 正常状态 */
 #battery {
-    color: #a6e3a1; /* 绿色 */
+  color: #a6e3a1; /* 绿色 */
 }
 
 /* 充电状态 - 保持和你现在的配色一致，或者换个更亮的颜色 */
 #battery.charging {
-    color: #94e2d5; /* 青色 */
+  color: #94e2d5; /* 青色 */
 }
 
 /* 低电量 (Warning) 
    如果你对黄色/绿色分辨不清，可以忽略颜色，依靠上面的 [-] 符号
 */
 #battery.warning:not(.charging) {
-    color: #f9e2af; 
+  color: #f9e2af;
 }
 
 /* 极低电量 (Critical) - 重点！
@@ -93,49 +89,36 @@ window#waybar {
    无论颜色如何，只要看到文字在闪，就知道该找充电器了。
 */
 #battery.critical:not(.charging) {
-    color: #f38ba8;
-    animation-name: blink;
-    animation-duration: 0.5s; /* 闪烁速度：0.5秒一次 */
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  color: #f38ba8;
+  animation-name: blink;
+  animation-duration: 0.5s; /* 闪烁速度：0.5秒一次 */
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 /* 8. 时钟 (白色或淡蓝) */
 #clock {
-    color: #cdd6f4;
+  color: #cdd6f4;
+  padding: 0 10px;
 }
 
 /* 9. 通知 */
 #custom-notification {
-    color: #b4befe;
+  color: #b4befe;
 }
 
 /* 10. 亮度 */
 #backlight {
-    color: #94e2d5; /* Catppuccin Teal */
-    padding: 0 8px; /* 保持和其他模块一样的间距 */
+  color: #94e2d5; /* Catppuccin Teal */
+  padding: 0 8px; /* 保持和其他模块一样的间距 */
 }
-
 
 /* 11. 赛博风水 */
 #custom-animation {
-    color: #b4befe; 
-    
-    /* 1. 移除之前的左右 padding，改用 min-width 控制 */
-    /* padding-left: 10px; */ 
-    /* padding-right: 15px; */
-    padding: 0 10px; /* 给左右各留一点点缝隙即可 */
-
-    /* 2. 【核心修复】强制锁定最小宽度 */
-    /* 你需要根据你的屏幕实际情况微调这个数字 */
-    /* 试着从 80px 开始，如果太大就改小，直到刚好放下最长的 "zzZ" */
-    min-width: 80px;
-
-    /* 3. 字体配置 */
-    font-family: "Monaspace Argon Var", "Symbols Nerd Font Mono";
-    font-size: 16px; 
-    font-weight: bold;
+  color: #b4befe;
+  padding: 0 10px;
+  min-width: 85px;
 }
 
 /* 通用间距设置 */
@@ -149,14 +132,14 @@ window#waybar {
 #pulseaudio.microphone,
 #tray,
 #custom-notification {
-    padding: 0 8px;
-    margin: 0;
-    background-color: transparent;
+  padding: 0 8px;
+  margin: 0;
+  background-color: transparent;
 }
 
 @keyframes blink {
-    to {
-        color: #1e1e2e;
-        background-color: #f38ba8;
-    }
+  to {
+    color: #1e1e2e;
+    background-color: #f38ba8;
+  }
 }
