@@ -1,35 +1,29 @@
 font-size = 12
 
-font-family = "Recursive"
+# font-family = "Recursive"
+# font-variation = wght=400
+# font-variation = MONO=1
+# font-variation = CASL=1
+# font-variation = slnt=0
+# font-variation-bold = wght=700
+# font-variation-bold = MONO=1
+# font-variation-bold = CASL=1
+# font-variation-italic = wght=400
+# font-variation-italic = MONO=1
+# font-variation-italic = CASL=1
+# font-variation-italic = slnt=-7
+# font-variation-bold-italic = wght=700
+# font-variation-bold-italic = MONO=1
+# font-variation-bold-italic = CASL=1
+# font-variation-bold-italic = slnt=-15
+# font-feature = calt, ss01, ss04, ss12
 
-# === 常规字体 (Regular) ===
-# 每一行设置一个参数
-font-variation = wght=400
-font-variation = MONO=1
-font-variation = CASL=1
-# 如果你不想要斜度，也可以加上 slnt=0，通常不需要
-font-variation = slnt=0
-
-# === 粗体 (Bold) ===
-# 必须重新声明 MONO 和 CASL，否则可能会回退到默认值
-font-variation-bold = wght=700
-font-variation-bold = MONO=1
-font-variation-bold = CASL=1
-
-# === 斜体 (Italic) ===
-# 这里可以开启“休闲风格” (CASL=1)
-font-variation-italic = wght=400
-font-variation-italic = MONO=1
-font-variation-italic = CASL=1
-font-variation-italic = slnt=-7
-
-# === 粗斜体 (Bold Italic) ===
-font-variation-bold-italic = wght=700
-font-variation-bold-italic = MONO=1
-font-variation-bold-italic = CASL=1
-font-variation-bold-italic = slnt=-15
-
-font-feature = calt, ss01, ss04, ss12
+font-family = "Cascadia Code"
+font-style = "SemiLight"
+font-style-bold = "SemiBold"
+font-style-italic = "SemiLight Italic"
+font-style-bold-italic = "SemiBold Italic"
+font-feature = calt
 
 
 theme = "Catppuccin Mocha"
