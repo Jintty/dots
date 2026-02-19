@@ -118,4 +118,5 @@ zathura
 zathura-pdf-mupdf
 zeal
 zen-browser
+zotero
 zoxide

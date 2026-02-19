@@ -4,16 +4,14 @@
   "height": 26,
   "spacing": 3, // 稍微给一点点间距，因为文字比图标更需要呼吸感
   "modules-left": ["niri/workspaces", "niri/window", "custom/animation"],
-  "modules-center": ["clock"],
+  "modules-center": ["temperature", "cpu", "memory", "disk", "network#speed"],
   "modules-right": [
     "pulseaudio",
     "pulseaudio#microphone",
     "backlight",
     "network",
-    "temperature",
-    "cpu",
-    "memory",
     "battery",
+    "clock",
     "tray",
     "custom/notification",
   ],
@@ -21,7 +19,7 @@
     "format": "{icon}",
     "format-icons": {
       // 将圆点改为更加字符化的表现形式，或者保持圆点也很简洁
-      "active": "[*]",
+      "active": "[#]",
       "default": " - ",
     },
   },
@@ -35,7 +33,7 @@
   "clock": {
     "interval": 1,
     "tooltip-format": "{calendar}",
-    "format": "{:%H:%M:%S  %m/%d/%y}",
+    "format": "{:%H:%M:%S  %b/%d/%Y}",
   },
   "cpu": {
     "interval": 1,
@@ -60,7 +58,7 @@
     "on-click": "nm-connection-editor",
   },
   "battery": {
-    "interval": 1,
+    "interval": 3,
     "states": {
       "warning": 30,
       "critical": 15,
@@ -119,5 +117,19 @@
     // 点击切换最大/最小亮度（可选的小功能）
     // "on-click": "brightnessctl set 100%",
     // "on-click-right": "brightnessctl set 5%"
+  },
+  "disk": {
+    "interval": 30,
+    "format": "DSK:{percentage_used}%",
+    "path": "/",
+    "states": {
+      "warning": 75, // 超过 75% 触发 warning 状态
+      "critical": 90, // 超过 90% 触发 critical 状态
+    },
+  },
+  "network#speed": {
+    "interval": 1,
+    "format": "DL:{bandwidthDownBytes} UP:{bandwidthUpBytes}",
+    "tooltip": false,
   },
 }

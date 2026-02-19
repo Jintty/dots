@@ -1,112 +1,120 @@
 return {
+  -- Config by gemini3pro
   {
     "folke/tokyonight.nvim",
     lazy = true,
     opts = {
-      style = "moon",
-    },
-  },
-
-  {
-    "catppuccin/nvim",
-    lazy = true,
-    name = "catppuccin",
-    opts = {
-      transparent_background = true,
-      term_colors = true,
-      no_italic = false,
-      integrations = {
-        aerial = true,
-        alpha = true,
-        cmp = true,
-        dashboard = true,
-        flash = true,
-        fzf = true,
-        grug_far = true,
-        gitsigns = true,
-        headlines = true,
-        illuminate = true,
-        indent_blankline = { enabled = true },
-        leap = true,
-        lsp_trouble = true,
-        mason = true,
-        markdown = true,
-        mini = true,
-        native_lsp = {
-          enabled = true,
-          underlines = {
-            errors = { "undercurl" },
-            hints = { "undercurl" },
-            warnings = { "undercurl" },
-            information = { "undercurl" },
-          },
-        },
-        navic = { enabled = true, custom_bg = "lualine" },
-        neotest = true,
-        neotree = true,
-        noice = true,
-        notify = true,
-        semantic_tokens = true,
-        snacks = true,
-        telescope = true,
-        treesitter = true,
-        treesitter_context = true,
-        which_key = true,
+      style = "storm",
+      transparent = true,
+      terminal_colors = true,
+      styles = {
+        comments = { italic = true },
+        keywords = { italic = true },
+        functions = {},
+        variables = {},
+        sidebars = "transparent",
+        floats = "transparent",
       },
+      sidebars = { "qf", "help", "terminal" },
+      day_brightness = 0.3,
+      hide_inactive_statusline = false,
+      dim_inactive = false,
+      lualine_bold = false,
+
+      on_highlights = function(hl, c)
+        -- 1. 修复 CursorLine (当前行)
+        -- 之前用的 c.bg_highlight 在透明下太淡了
+        -- 这里使用硬编码的 #2e3c64 (深靛蓝)，对比度更高，一眼就能找到光标
+        hl.CursorLine = { bg = "#2e3c64" }
+
+        -- 保持行号高亮，辅助定位
+        hl.CursorLineNr = { fg = c.orange, bold = true }
+
+        -- 2. 修复 Lualine 底部黑带
+        hl.StatusLine = { bg = "NONE" }
+        hl.StatusLineNC = { bg = "NONE" }
+
+        -- 3. 去除 WinBar 背景
+        hl.WinBar = { bg = "NONE" }
+        hl.WinBarNC = { bg = "NONE" }
+        -- hl.Comment = { fg = "#9aa5ce", italic = true }
+      end,
     },
   },
 
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin-mocha",
-      -- colorscheme = "tokyonight",
+      colorscheme = "tokyonight",
     },
   },
 
   { "akinsho/bufferline.nvim", enabled = false },
+
   {
     "nvim-lualine/lualine.nvim",
     opts = function(_, opts)
-      opts.options.section_separators = { left = "", right = "" }
+      opts.options.globalstatus = true
+
+      opts.options.section_separators = { left = "", right = "" }
+      opts.options.component_separators = { left = "->", right = "<-" }
+
+      local function generate_transparent_theme()
+        local theme = require("lualine.themes.auto")
+
+        for _, mode in pairs(theme) do
+          -- 保持两端模式指示器的颜色 (Normal=蓝, Insert=绿...)
+          -- 但去掉了圆角和花哨的装饰，回归纯粹的矩形色块
+          if mode.a then
+            mode.a.gui = "bold"
+          end
+          if mode.z then
+            mode.z.gui = "bold"
+          end
+
+          -- 中间区域透明化
+          local parts = { "b", "c", "x", "y" }
+          for _, part in ipairs(parts) do
+            if mode[part] then
+              mode[part].bg = "NONE"
+            end
+          end
+        end
+        return theme
+      end
+
+      opts.options.theme = generate_transparent_theme()
     end,
   },
+
   {
     "folke/snacks.nvim",
-    ---@type snacks.Config
     opts = {
       picker = {
         backdrop = false,
         sources = {
           files = { hidden = true },
           grep = { hidden = true },
-          explorer = { hidden = true },
         },
       },
       explorer = {},
       indent = { enabled = false },
-      terminal = {
-        win = { wo = { winhighlight = "Normal:Normal,FloatBorder:Normal" } },
-      },
       dashboard = {
         enabled = true,
         preset = {
-          -- stylua: ignore
-          header = 
-[[
-___ _____ _   _   _    ___ ___   ___  _    ___ ___ _  _
-  / __|_   _/ \ | \ / |  | __/ _ \ / _ \| |  |_ _/ __| || |
-  \__ \ | |/ _ \| |V| |  | _| (_) | (_) | |__ | |\__ \ __ |
-  |___/ |_/_/ \_\_| |_|  |_| \___/ \___/|____|___|___/_||_|
-]],
-          --[[ 
-           /\_/\
-          ( o.o )
-           > ^ <
-          ]]
+          header = [[
+⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⠿⢿⣶⡄⠀⠀⠀⠀⠀⢀⣴⣾⠿⢿⣶⣄⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⣰⣿⠏⠀⠀⠀⠻⣿⣆⠀⠀⠀⢠⣿⡟⠁⠀⠀⠙⣿⣧⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⣰⣿⠋⠀⠀⠀⠀⠀⠘⣿⣿⣿⣿⣿⡏⠀⠀⠀⠀⠀⠈⢿⣧⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⣰⣿⠇⠀⠀⠀⠀⠀⠀⠀⢧⠿⣧⠿⣴⠀⠀⠀⠀⠀⠀⠀⠘⣿⣧⠀⠀⠀⠀
+⢰⣿⣿⣿⣿⣧⣤⠀⠀⠀⢀⣀⠀⠀⠀⠀⣤⡀⠀⠀⠀⣀⡀⠀⠀⠀⣤⣼⣿⣿⣿⣿⡆
+⢀⣤⣿⣿⣯⣭⣭⠀⠀⠀⢿⣿⡇⠀⢀⣤⣿⣧⡄⠀⢸⣿⣿⠀⠀⠀⣭⣭⣽⣿⣯⣤⡀
+⠘⢻⣿⠏⠉⠉⠉⠀⠀⠀⠈⠉⠀⠀⠀⠉⠉⠉⠁⠀⠀⠉⠁⠀⠀⠀⠉⠉⠉⠙⣿⣿⠃
+⢀⣿⣟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣹⣿⡄
+          ]],
         },
         sections = {
-          { section = "header", padding = 1, color = "SnacksPickerDir" }, -- 使用文件夹的蓝色
+          { section = "header", padding = 1, color = "SnacksPickerDir" },
           { section = "keys", gap = 1, padding = 1 },
           { section = "startup" },
         },
@@ -116,101 +124,29 @@ ___ _____ _   _   _    ___ ___   ___  _    ___ ___ _  _
     config = function(_, opts)
       require("snacks").setup(opts)
 
-      -- Catppuccin Mocha 调色
-      local colors = {
-        text = "#cdd6f4", -- 柔和文本
-        subtext = "#a6adc8", -- 次要文本
-        blue = "#89b4fa", -- 蓝色
-        mauve = "#cba6f7", -- 紫色
+      local function set_highlights()
+        vim.api.nvim_set_hl(0, "SnacksPickerMatch", { link = "Search", underline = true, bold = true })
+        vim.api.nvim_set_hl(0, "SnacksPickerListCursorLine", { link = "CursorLine", bold = true })
+        vim.api.nvim_set_hl(0, "SnacksPickerDir", { link = "Directory", bold = true })
 
-        -- 关键修改：使用 Surface1 而不是 Surface0
-        -- Surface1 (#45475a) 比背景稍亮，对比度更清晰，但依然柔和
-        selection_bg = "#45475a",
-      }
-
-      local overrides = {
-        -- 1. 主体文字：保持柔和
-        SnacksPicker = { bg = "NONE", fg = colors.text },
-        SnacksPickerInput = { bg = "NONE", fg = colors.text, bold = true },
-
-        -- 2. 搜索匹配字符：【核心修改】增加下划线
-        -- 即使你分不清紫色和白色，下划线会直接告诉你匹配在哪里
-        SnacksPickerMatch = { fg = colors.mauve, bold = true, underline = true },
-
-        -- 3. 文件夹：保持加粗
-        -- 通过"字很厚"来判断这是文件夹，而不是靠颜色
-        SnacksPickerDir = { fg = colors.blue, bold = true },
-        SnacksPickerFile = { fg = colors.text },
-
-        -- 4. 选中行：【核心修改】
-        -- bg: 使用对比度稍高的灰色，形成明显的"光带"
-        -- bold: 选中行文字加粗，进一步强化视觉
-        SnacksPickerListCursorLine = { bg = colors.selection_bg, fg = colors.text, bold = true },
-
-        -- 5. 边框：保持原样，作为界限
-        SnacksPickerBorder = { bg = "NONE", fg = colors.mauve },
-        SnacksPickerPreviewBorder = { bg = "NONE", fg = colors.mauve },
-
-        -- 6. 兜底设置
-        SnacksNormal = { bg = "NONE" },
-        SnacksPickerPreview = { bg = "NONE" },
-        SnacksPickerList = { bg = "NONE" },
-      }
-
-      for group, styles in pairs(overrides) do
-        if styles.bg == nil then
-          styles.bg = "NONE"
-        end
-        styles.ctermbg = "NONE"
-        vim.api.nvim_set_hl(0, group, styles)
-      end
-    end,
-  },
-  {
-    "nvim-lualine/lualine.nvim",
-    opts = function(_, opts)
-      -- 1. 引入 Catppuccin 调色盘，我们需要用到它的深灰色
-      -- 注意：这里假设你用的是 mocha 主题，如果你用 macchiato 请自行替换
-      local C = require("catppuccin.palettes").get_palette("mocha") or {}
-
-      -- 2. 依然保持极简的分隔符设置
-      opts.options.section_separators = { left = "", right = "" }
-      opts.options.component_separators = { left = "->", right = "<-" }
-
-      -- 3. 核心魔法：选择性透明
-      local custom_theme = require("lualine.themes.auto")
-
-      -- 遍历所有模式 (normal, insert, visual, etc.)
-      for _, mode in pairs(custom_theme) do
-        -- 遍历模式下的所有区域 (a, b, c, x, y, z)
-        -- a: 模式 (左一)
-        -- b: 分支 (左二)
-        -- c: 文件名 (左三)
-        -- x: 编码/格式 (右三)
-        -- y: 进度 (右二)
-        -- z: 时间/位置 (右一)
-        for section_name, section in pairs(mode) do
-          if section_name == "a" then
-            -- 【修复左侧】：Vim 模式块
-            -- 不设为 NONE，而是设为 Surface0 (深灰)，作为垫底
-            -- 这样它看起来像是一个深色的悬浮按钮，而不是刺眼的亮色块
-            section.bg = C.surface0
-            section.fg = C.blue -- 强制文字为蓝色 (或者保持默认，随模式变色)
-            section.gui = "bold"
-          elseif section_name == "z" then
-            -- 【修复右侧】：时间/位置块
-            -- 同样垫一层深灰色背景
-            section.bg = C.surface0
-            section.gui = "bold"
-          else
-            -- 【中间保持透明】：b, c, x, y 全部透明
-            section.bg = "NONE"
-          end
+        local groups = {
+          "SnacksPicker",
+          "SnacksPickerInput",
+          "SnacksPickerBorder",
+          "SnacksPickerPreview",
+          "SnacksPickerList",
+          "SnacksNormal",
+          "SnacksPickerPreviewBorder",
+        }
+        for _, group in ipairs(groups) do
+          vim.api.nvim_set_hl(0, group, { bg = "NONE" })
         end
       end
 
-      -- 4. 应用修改后的主题
-      opts.options.theme = custom_theme
+      set_highlights()
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        callback = set_highlights,
+      })
     end,
   },
 }

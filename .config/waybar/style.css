@@ -3,125 +3,124 @@
   border-radius: 0;
   font-family: "Source Code Pro", "Symbols Nerd Font Mono";
   font-size: 13.5px;
-  /* font-weight: bold; */
   min-height: 0;
-
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 window#waybar {
-  background: rgba(30, 30, 46, 0.75);
-  color: #cdd6f4;
-  border-bottom: 2px solid #cba6f7;
-  text-shadow: none; /* 移除阴影让文字在 1080P 下更锐利 */
+  /* TokyoNight Storm 背景色 #24283b，带 85% 不透明度 */
+  background: rgba(36, 40, 59, 0.85);
+  /* 默认字体颜色：TokyoNight Foreground #c0caf5 (灰蓝白) */
+  color: #c0caf5;
+
+  /* 底部边框：使用 TokyoNight Blue #7aa2f7，清晰的分界线 */
+  border-bottom: 2px solid #7aa2f7;
 }
 
+/* --- 工作区 (Workspaces) --- */
 #workspaces button {
-  padding: 0 4px;
-  color: #6c7086; /* 未选中的工作区颜色稍微暗淡一点 */
+  padding: 0 5px;
+  color: #565f89; /* 未选中：TokyoNight Comment (深蓝灰) - 低调 */
 }
 
 #workspaces button.active {
-  color: #cba6f7; /* 选中的保持骚气紫 */
+  color: #7aa2f7; /* 选中：TokyoNight Blue - 高亮 */
+  border-bottom: 2px solid #7aa2f7; /* 增加底部线条辅助识别 */
 }
 
-/* --- 核心部分：利用颜色区分模块 --- */
+#workspaces button.urgent {
+  color: #db4b4b; /* 紧急：红色 */
+}
 
-/* 1. 音频 (蓝色系) */
+/* --- 核心模块配色 --- */
+
+/* 1. 音频 (Blue -> Cyan 过渡) */
 #pulseaudio {
-  color: #89b4fa;
+  color: #7dcfff; /* TokyoNight Cyan */
 }
 #pulseaudio.muted {
-  color: #a6adc8; /* 静音变灰 */
+  color: #7dcfff; /* 静音变灰 */
 }
 
-/* 2. 麦克风 (粉色系) */
+/* 2. 麦克风 (紫色系，与音频区分) */
 #pulseaudio.microphone {
-  color: #f5c2e7;
+  color: #bb9af7; /* TokyoNight Magenta */
 }
 
-/* 3. 网络 (紫色/淡紫) - 对应你的 Net: essid */
+/* 3. 网络 (靛蓝色) */
 #network {
-  color: #cba6f7;
+  color: #7aa2f7; /* TokyoNight Blue */
 }
 #network.disconnected {
-  color: #f38ba8;
+  color: #f7768e; /* 断网红 */
 }
 
-/* 4. 温度 (桃红/橙色) */
+/* 4. 温度 (橙色 - 警示感) */
 #temperature {
-  color: #fab387;
+  color: #ff9e64; /* TokyoNight Orange */
 }
 #temperature.critical {
-  color: #f38ba8;
+  color: #f7768e; /* 红色 */
 }
 
-/* 5. CPU (红色系/栗色) */
+/* 5. CPU (浅红/粉红 - 负载感) */
 #cpu {
-  color: #eba0ac;
+  color: #f7768e; /* TokyoNight Red */
 }
 
-/* 6. 内存 (黄色) */
+/* 6. 内存 (黄色 - 提醒感) */
 #memory {
-  color: #f9e2af;
+  color: #e0af68; /* TokyoNight Yellow */
 }
 
-/* 7. 电池 (根据状态变色) */
-/* 正常状态 */
+/* 7. 电池 (分状态配色，增强可读性) */
+/* 正常状态: 绿色 */
 #battery {
-  color: #a6e3a1; /* 绿色 */
+  color: #9ece6a; /* TokyoNight Green */
 }
 
-/* 充电状态 - 保持和你现在的配色一致，或者换个更亮的颜色 */
+/* 充电状态: 青色 (高亮，一眼能看出在回血) */
 #battery.charging {
-  color: #94e2d5; /* 青色 */
+  color: #2ac3de; /* TokyoNight Cyan (Darker) */
 }
 
-/* 低电量 (Warning) 
-   如果你对黄色/绿色分辨不清，可以忽略颜色，依靠上面的 [-] 符号
-*/
+/* 低电量: 黄色 */
 #battery.warning:not(.charging) {
-  color: #f9e2af;
+  color: #e0af68;
 }
 
-/* 极低电量 (Critical) - 重点！
-   这里保留了 blink (闪烁) 动画。
-   无论颜色如何，只要看到文字在闪，就知道该找充电器了。
-*/
+/* 极低电量: 红色闪烁 */
 #battery.critical:not(.charging) {
-  color: #f38ba8;
+  color: #f7768e;
   animation-name: blink;
-  animation-duration: 0.5s; /* 闪烁速度：0.5秒一次 */
+  animation-duration: 0.5s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
 
-/* 8. 时钟 (白色或淡蓝) */
+/* 8. 时钟 (高亮白，最容易看清) */
 #clock {
-  color: #cdd6f4;
-  padding: 0 10px;
+  color: #c0caf5;
+  margin-right: 0;
 }
 
 /* 9. 通知 */
 #custom-notification {
-  color: #b4befe;
+  color: #bb9af7;
 }
 
 /* 10. 亮度 */
 #backlight {
-  color: #94e2d5; /* Catppuccin Teal */
-  padding: 0 8px; /* 保持和其他模块一样的间距 */
+  color: #e0af68; /* 用黄色代表光 */
 }
 
-/* 11. 赛博风水 */
+/* 11. 幽灵/赛博装饰 */
 #custom-animation {
-  color: #b4befe;
-  padding: 0 10px;
-  min-width: 85px;
+  color: #7dcfff;
 }
 
-/* 通用间距设置 */
+/* 通用间距设置 - 保持你的紧凑风格 */
 #clock,
 #battery,
 #cpu,
@@ -131,15 +130,38 @@ window#waybar {
 #pulseaudio,
 #pulseaudio.microphone,
 #tray,
+#backlight,
 #custom-notification {
   padding: 0 8px;
-  margin: 0;
   background-color: transparent;
 }
 
+/* 闪烁动画定义 */
 @keyframes blink {
   to {
-    color: #1e1e2e;
-    background-color: #f38ba8;
+    color: #1a1b26; /* 背景变黑 */
+    background-color: #f7768e; /* 字体背景变红 */
   }
 }
+
+/* 1. 正常状态 (低于 75%)：TokyoNight 柔和的青绿/蓝绿色 */
+#disk {
+  color: #7dcfff;
+  padding: 0 8px;
+  background-color: transparent;
+}
+
+/* 2. 中负载/警告 (75% - 90%)：TokyoNight 橙黄色 */
+#disk.warning {
+  color: #e0af68;
+}
+
+/* 3. 高负载/危急 (大于 90%)：TokyoNight 红色 (带一点点加粗或闪烁效果也可以) */
+#disk.critical {
+  color: #f7768e;
+  font-weight: 800; /* 空间快满了，字重加大一点提醒自己 */
+}
+
+#network.speed {
+  color: #e0af68;
+} /* TokyoNight 黄 */
