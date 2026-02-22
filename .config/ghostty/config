@@ -7,6 +7,7 @@ font-thicken = true
 font-feature = calt, liga, cv01=3, cv02=1, cv05=5, cv40=2, cv41=7, cv42=1, cv44=8, cv47=8, cv49=2, cv52=1, cv59=4
 adjust-cell-height = -5%
 
+
 # font-family = "Recursive"
 # font-variation = wght=400
 # font-variation = MONO=1

@@ -1,10 +1,10 @@
 * {
   border: none;
   border-radius: 0;
-  font-family: "Source Code Pro", "Symbols Nerd Font Mono";
-  font-size: 13.5px;
+  font-family: "Recursive", "Symbols Nerd Font Mono";
+  font-size: 13px;
   min-height: 0;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); */
 }
 
 window#waybar {
@@ -14,7 +14,7 @@ window#waybar {
   color: #c0caf5;
 
   /* 底部边框：使用 TokyoNight Blue #7aa2f7，清晰的分界线 */
-  border-bottom: 2px solid #7aa2f7;
+  border-bottom: 0.5px solid #7aa2f7;
 }
 
 /* --- 工作区 (Workspaces) --- */
@@ -25,7 +25,7 @@ window#waybar {
 
 #workspaces button.active {
   color: #7aa2f7; /* 选中：TokyoNight Blue - 高亮 */
-  border-bottom: 2px solid #7aa2f7; /* 增加底部线条辅助识别 */
+  /* border-bottom: 2px solid #7aa2f7; */
 }
 
 #workspaces button.urgent {
@@ -106,8 +106,31 @@ window#waybar {
 }
 
 /* 9. 通知 */
+/* --- Mako 动态通知模块 --- */
+
+/* 默认基础设定 */
 #custom-notification {
-  color: #bb9af7;
+  padding: 0 8px;
+  background-color: transparent;
+}
+
+/* 1. 空闲状态 (MSG:0)：使用 TokyoNight Comment 灰蓝色。
+   极其低调，假装自己不存在，绝不干扰你写代码 */
+#custom-notification.idle {
+  color: #565f89;
+}
+
+/* 2. 有未读消息 (MSG:1, MSG:3...)：使用 TokyoNight Red 红色。
+   高亮加粗，一眼就能用余光看到有人找你 */
+#custom-notification.unread {
+  color: #f7768e;
+  font-weight: 800;
+}
+
+/* 3. 勿扰模式 (MSG:DND)：使用 TokyoNight Yellow 黄色。
+   提醒你当前处于“闭关”状态，不会被打扰 */
+#custom-notification.dnd {
+  color: #e0af68;
 }
 
 /* 10. 亮度 */
@@ -165,3 +188,9 @@ window#waybar {
 #network.speed {
   color: #e0af68;
 } /* TokyoNight 黄 */
+
+#custom-uptime {
+  color: #bb9af7; /* TokyoNight 紫色，放在正中间很优雅 */
+  padding: 0 8px;
+  background-color: transparent;
+}

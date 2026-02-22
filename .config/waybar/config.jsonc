@@ -1,18 +1,25 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 26,
-  "spacing": 3, // 稍微给一点点间距，因为文字比图标更需要呼吸感
+  "height": 20,
+  "spacing": 1, // 稍微给一点点间距，因为文字比图标更需要呼吸感
   "modules-left": ["niri/workspaces", "niri/window", "custom/animation"],
-  "modules-center": ["temperature", "cpu", "memory", "disk", "network#speed"],
+  "modules-center": [
+    "temperature",
+    "cpu",
+    "memory",
+    "disk",
+    "network#speed",
+    "custom/uptime",
+  ],
   "modules-right": [
     "pulseaudio",
     "pulseaudio#microphone",
-    "backlight",
     "network",
+    "backlight",
     "battery",
-    "clock",
     "tray",
+    "clock",
     "custom/notification",
   ],
   "niri/workspaces": {
@@ -20,15 +27,17 @@
     "format-icons": {
       // 将圆点改为更加字符化的表现形式，或者保持圆点也很简洁
       "active": "[#]",
-      "default": " - ",
+      "default": "-",
     },
   },
   "niri/window": {
     "format": "[ {title} ]", // 给标题加个括号，更有终端感
-    "max-length": 40,
+    "max-length": 20,
     "rewrite": {
-      "(.*) - Zen Browser": "Zen",
+      ".*Zen.*": "[ Zen ]",
+      // ".*nvim.*": "nvim",
     },
+    "tooltip-format": "{title}",
   },
   "clock": {
     "interval": 1,
@@ -78,8 +87,12 @@
     "spacing": 8,
   },
   "custom/notification": {
-    "format": "NOTIF", // 文字代替铃铛
-    "on-click": "makoctl dismiss",
+    "exec": "~/.config/waybar/scripts/mako.sh",
+    "return-type": "json", // 关键：告诉 Waybar 接收 JSON 格式以实现动态 CSS
+    "interval": 3, // 每秒刷新一次状态
+    "format": "{}",
+    // 顺手优化一下交互：左键清除所有通知 (-a)，右键切换勿扰模式
+    "on-click": "makoctl dismiss -a",
     "on-click-right": "makoctl mode -t dnd",
     "tooltip": false,
   },
@@ -129,7 +142,17 @@
   },
   "network#speed": {
     "interval": 1,
-    "format": "DL:{bandwidthDownBytes} UP:{bandwidthUpBytes}",
+    "format": "DL:{bandwidthDownBytes:>7}  UP:{bandwidthUpBytes:>8}",
+    "tooltip": false,
+  },
+  "custom/uptime": {
+    // 读取内核开机秒数并动态格式化：
+    // 如果开机不足1小时，显示 "45m"
+    // 如果不足1天，显示 "5h 15m"
+    // 如果超过1天，自动省略分钟，只显示 "2d 4h" 保持界面紧凑
+    "exec": "awk '{d=int($1/86400); h=int(($1%86400)/3600); m=int(($1%3600)/60); if(d>0) printf \"%dd %dh\\n\", d, h; else if(h>0) printf \"%dh %dm\\n\", h, m; else printf \"%dm\\n\", m}' /proc/uptime",
+    "interval": 60,
+    "format": "UP:{}",
     "tooltip": false,
   },
 }

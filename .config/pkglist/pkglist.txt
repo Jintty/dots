@@ -54,6 +54,7 @@ ly
 mako
 man-db
 man-pages
+mangohud
 mesa
 mpv
 neovide

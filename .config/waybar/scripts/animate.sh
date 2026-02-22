@@ -1,13 +1,15 @@
 #!/bin/bash
 
 MODE=${1:-ghost}
-icon="󱙝"
+icon=" 󱙝"
 
 frames=(
-  "$icon     "
-  "$icon z   "
-  "$icon zz  "
-  "$icon zzZ "
+  "$icon    "
+  "$icon z  "
+  "$icon zz "
+  "$icon zzZ"
+  "$icon zz "
+  "$icon z  "
 )
 
 while true; do

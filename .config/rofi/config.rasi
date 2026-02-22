@@ -3,7 +3,7 @@ configuration {
     show-icons:                 true;
     display-drun:               "";
     drun-display-format:        "{name}";
-    font:                       "Recursive 12.5"; /* 匹配你 Ghostty 的字体 */
+    font:                       "Recursive 13"; /* 匹配你 Ghostty 的字体 */
     matching:                   "fuzzy";    /* 开启模糊匹配 */
     sort:                       true;       /* 开启排序 */
     sorting-method:             "fzf";      /* 使用 fzf 算法进行排序 */
