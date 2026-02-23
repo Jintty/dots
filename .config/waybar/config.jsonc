@@ -4,14 +4,7 @@
   "height": 20,
   "spacing": 1, // 稍微给一点点间距，因为文字比图标更需要呼吸感
   "modules-left": ["niri/workspaces", "niri/window", "custom/animation"],
-  "modules-center": [
-    "temperature",
-    "cpu",
-    "memory",
-    "disk",
-    "network#speed",
-    "custom/uptime",
-  ],
+  "modules-center": ["temperature", "cpu", "memory", "disk"],
   "modules-right": [
     "pulseaudio",
     "pulseaudio#microphone",
@@ -42,7 +35,7 @@
   "clock": {
     "interval": 1,
     "tooltip-format": "{calendar}",
-    "format": "{:%H:%M:%S  %b/%d/%Y}",
+    "format": "{:%H:%M:%S  %m/%d/%Y}",
   },
   "cpu": {
     "interval": 1,
@@ -142,17 +135,7 @@
   },
   "network#speed": {
     "interval": 1,
-    "format": "DL:{bandwidthDownBytes:>7}  UP:{bandwidthUpBytes:>8}",
-    "tooltip": false,
-  },
-  "custom/uptime": {
-    // 读取内核开机秒数并动态格式化：
-    // 如果开机不足1小时，显示 "45m"
-    // 如果不足1天，显示 "5h 15m"
-    // 如果超过1天，自动省略分钟，只显示 "2d 4h" 保持界面紧凑
-    "exec": "awk '{d=int($1/86400); h=int(($1%86400)/3600); m=int(($1%3600)/60); if(d>0) printf \"%dd %dh\\n\", d, h; else if(h>0) printf \"%dh %dm\\n\", h, m; else printf \"%dm\\n\", m}' /proc/uptime",
-    "interval": 60,
-    "format": "UP:{}",
+    "format": ":{bandwidthDownBytes:>8} :{bandwidthUpBytes:>8}",
     "tooltip": false,
   },
 }

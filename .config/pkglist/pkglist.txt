@@ -84,6 +84,7 @@ racket
 rime-ice-git
 ripgrep
 rofi
+steam
 sudo
 swaybg
 swayidle
