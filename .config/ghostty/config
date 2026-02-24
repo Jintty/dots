@@ -25,7 +25,7 @@ font-feature = calt, liga, cv01=3, cv02=1, cv05=5, cv40=2, cv41=7, cv42=1, cv44=
 # font-variation-bold-italic = slnt=-5
 
 theme = "TokyoNight Storm"
-background-opacity = 0.9
+background-opacity = 0.95
 window-decoration = false
 cursor-style = block
 shell-integration-features = no-cursor

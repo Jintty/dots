@@ -1,8 +1,8 @@
 * {
   border: none;
   border-radius: 0;
-  font-family: "Monaspace Argon var", "Symbols Nerd Font Mono";
-  font-size: 13px;
+  font-family: "Iosevka", "Symbols Nerd Font Mono";
+  font-size: 14px;
   min-height: 0;
   /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); */
 }
@@ -193,4 +193,20 @@ window#waybar {
   color: #bb9af7; /* TokyoNight 紫色，放在正中间很优雅 */
   padding: 0 8px;
   background-color: transparent;
+}
+
+/* idle inhibitor: OFF (default) */
+#idle_inhibitor {
+  color: rgba(169, 177, 214, 0.75); /* 注释灰 */
+}
+
+/* idle inhibitor: ON */
+#idle_inhibitor.activated {
+  color: rgba(125, 207, 255, 0.95); /* #7dcfff 青 */
+  border-bottom: 2px solid rgba(125, 207, 255, 0.85);
+}
+
+/* 可选：hover 稍微亮一点 */
+#idle_inhibitor:hover {
+  color: rgba(192, 202, 245, 0.95);
 }

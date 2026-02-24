@@ -9,6 +9,7 @@
     "pulseaudio",
     "pulseaudio#microphone",
     "network",
+    "idle_inhibitor",
     "backlight",
     "battery",
     "tray",
@@ -136,6 +137,14 @@
   "network#speed": {
     "interval": 1,
     "format": ":{bandwidthDownBytes:>8} :{bandwidthUpBytes:>8}",
+    "tooltip": false,
+  },
+  "idle_inhibitor": {
+    "format": "IDLE:{icon}",
+    "format-icons": {
+      "activated": "ON",
+      "deactivated": "OFF",
+    },
     "tooltip": false,
   },
 }
