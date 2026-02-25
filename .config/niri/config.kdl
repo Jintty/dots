@@ -265,7 +265,7 @@ spawn-at-startup "fcitx5" "-d"
 spawn-at-startup "mako"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup "clash-party"
-spawn-at-startup "swaybg" "-i" "/home/Aura/Pictures/wallpapers/1395756.png" "-m" "fill"
+spawn-at-startup "swaybg" "-i" "/home/Aura/Pictures/wallpapers/wallhaven-o3km89.png" "-m" "fill"
 spawn-at-startup "swayidle" "-w" \
     "timeout" "600" "swaylock -f" \
     "timeout" "1800" "systemctl suspend" \

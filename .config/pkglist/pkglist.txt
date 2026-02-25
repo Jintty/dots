@@ -42,6 +42,8 @@ glu
 goldendict-ng
 grub
 imagemagick
+impala
+iwd
 jdk-openjdk
 kanshi
 lazygit
