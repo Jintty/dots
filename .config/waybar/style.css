@@ -1,149 +1,67 @@
+/* =========================================================
+   Waybar – Catppuccin Mocha (Colorblind-friendly, Purple-leaning)
+   Strategy: brightness + shape > hue
+   ========================================================= */
+
+/* ---------- Palette (Catppuccin Mocha) ---------- */
+@define-color crust     #11111b;
+@define-color mantle    #181825;
+@define-color base      #1e1e2e;
+
+@define-color text      #cdd6f4;
+@define-color subtext1  #bac2de;
+@define-color subtext0  #a6adc8;
+@define-color overlay2  #9399b2;
+@define-color overlay1  #7f849c;
+@define-color overlay0  #6c7086;
+
+@define-color lavender  #b4befe;
+@define-color mauve     #cba6f7; /* your beloved purple */
+@define-color sapphire  #74c7ec;
+@define-color sky       #89dceb;
+@define-color teal      #94e2d5;
+@define-color peach     #fab387;
+@define-color maroon    #eba0ac; /* softer “red-ish”, less harsh */
+@define-color red       #f38ba8;
+
+/* ---------- Semantic tokens (keep few) ---------- */
+@define-color accent        @mauve; /* default highlight */
+@define-color info          @lavender; /* calm emphasis */
+@define-color ok            @teal; /* positive state */
+@define-color warn          @peach; /* warning (easier than yellow) */
+@define-color crit          @maroon; /* critical (softer than pure red) */
+
+/* Background tints (do the heavy lifting) */
+@define-color bg-bar        rgba(30, 30, 46, 0.85); /* base with opacity */
+@define-color bg-soft       rgba(205, 214, 244, 0.06);
+
+@define-color bg-accent     rgba(203, 166, 247, 0.14);
+@define-color bg-info       rgba(180, 190, 254, 0.14);
+@define-color bg-ok         rgba(148, 226, 213, 0.14);
+@define-color bg-warn       rgba(250, 179, 135, 0.16);
+@define-color bg-crit       rgba(235, 160, 172, 0.18);
+
+/* Borders */
+@define-color line          rgba(180, 190, 254, 0.55); /* lavender */
+@define-color line-strong   rgba(203, 166, 247, 0.80); /* mauve */
+
+/* ---------- Global ---------- */
 * {
   border: none;
   border-radius: 0;
   font-family: "Iosevka", "Symbols Nerd Font Mono";
   font-size: 14px;
   min-height: 0;
-  /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); */
 }
 
+/* ---------- Bar shell ---------- */
 window#waybar {
-  /* TokyoNight Storm 背景色 #24283b，带 85% 不透明度 */
-  background: rgba(36, 40, 59, 0.85);
-  /* 默认字体颜色：TokyoNight Foreground #c0caf5 (灰蓝白) */
-  color: #c0caf5;
-
-  /* 底部边框：使用 TokyoNight Blue #7aa2f7，清晰的分界线 */
-  border-bottom: 0.5px solid #7aa2f7;
+  background: @bg-bar;
+  color: @text;
+  border-bottom: 1px solid @line;
 }
 
-/* --- 工作区 (Workspaces) --- */
-#workspaces button {
-  padding: 0 5px;
-  color: #565f89; /* 未选中：TokyoNight Comment (深蓝灰) - 低调 */
-}
-
-#workspaces button.active {
-  color: #7aa2f7; /* 选中：TokyoNight Blue - 高亮 */
-  /* border-bottom: 2px solid #7aa2f7; */
-}
-
-#workspaces button.urgent {
-  color: #db4b4b; /* 紧急：红色 */
-}
-
-/* --- 核心模块配色 --- */
-
-/* 1. 音频 (Blue -> Cyan 过渡) */
-#pulseaudio {
-  color: #7dcfff; /* TokyoNight Cyan */
-}
-#pulseaudio.muted {
-  color: #7dcfff; /* 静音变灰 */
-}
-
-/* 2. 麦克风 (紫色系，与音频区分) */
-#pulseaudio.microphone {
-  color: #bb9af7; /* TokyoNight Magenta */
-}
-
-/* 3. 网络 (靛蓝色) */
-#network {
-  color: #7aa2f7; /* TokyoNight Blue */
-}
-#network.disconnected {
-  color: #f7768e; /* 断网红 */
-}
-
-/* 4. 温度 (橙色 - 警示感) */
-#temperature {
-  color: #ff9e64; /* TokyoNight Orange */
-}
-#temperature.critical {
-  color: #f7768e; /* 红色 */
-}
-
-/* 5. CPU (浅红/粉红 - 负载感) */
-#cpu {
-  color: #f7768e; /* TokyoNight Red */
-}
-
-/* 6. 内存 (黄色 - 提醒感) */
-#memory {
-  color: #e0af68; /* TokyoNight Yellow */
-}
-
-/* 7. 电池 (分状态配色，增强可读性) */
-/* 正常状态: 绿色 */
-#battery {
-  color: #9ece6a; /* TokyoNight Green */
-}
-
-/* 充电状态: 青色 (高亮，一眼能看出在回血) */
-#battery.charging {
-  color: #2ac3de; /* TokyoNight Cyan (Darker) */
-}
-
-/* 低电量: 黄色 */
-#battery.warning:not(.charging) {
-  color: #e0af68;
-}
-
-/* 极低电量: 红色闪烁 */
-#battery.critical:not(.charging) {
-  color: #f7768e;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
-/* 8. 时钟 (高亮白，最容易看清) */
-#clock {
-  color: #c0caf5;
-  margin-right: 0;
-}
-
-/* 9. 通知 */
-/* --- Mako 动态通知模块 --- */
-
-/* 默认基础设定 */
-#custom-notification {
-  padding: 0 8px;
-  background-color: transparent;
-}
-
-/* 1. 空闲状态 (MSG:0)：使用 TokyoNight Comment 灰蓝色。
-   极其低调，假装自己不存在，绝不干扰你写代码 */
-#custom-notification.idle {
-  color: #565f89;
-}
-
-/* 2. 有未读消息 (MSG:1, MSG:3...)：使用 TokyoNight Red 红色。
-   高亮加粗，一眼就能用余光看到有人找你 */
-#custom-notification.unread {
-  color: #f7768e;
-  font-weight: 800;
-}
-
-/* 3. 勿扰模式 (MSG:DND)：使用 TokyoNight Yellow 黄色。
-   提醒你当前处于“闭关”状态，不会被打扰 */
-#custom-notification.dnd {
-  color: #e0af68;
-}
-
-/* 10. 亮度 */
-#backlight {
-  color: #e0af68; /* 用黄色代表光 */
-}
-
-/* 11. 幽灵/赛博装饰 */
-#custom-animation {
-  color: #7dcfff;
-}
-
-/* 通用间距设置 - 保持你的紧凑风格 */
+/* Give modules a “pill-less” block feeling via padding and optional soft hover */
 #clock,
 #battery,
 #cpu,
@@ -154,59 +72,249 @@ window#waybar {
 #pulseaudio.microphone,
 #tray,
 #backlight,
+#custom-notification,
+#disk,
+#custom-uptime,
+#idle_inhibitor,
+#network.speed {
+  padding: 0 8px;
+  background-color: transparent;
+}
+
+/* Optional: subtle hover highlight (helps discoverability, not required) */
+#clock:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#network:hover,
+#pulseaudio:hover,
+#pulseaudio.microphone:hover,
+#backlight:hover,
+#custom-notification:hover,
+#disk:hover,
+#custom-uptime:hover,
+#idle_inhibitor:hover {
+  background-color: @bg-soft;
+}
+
+/* =========================================================
+   Workspaces (shape-first)
+   ========================================================= */
+#workspaces button {
+  padding: 0 6px;
+  color: @overlay0;
+  background: transparent;
+}
+
+/* Active: bright text + strong underline (not just hue) */
+#workspaces button.active {
+  color: @text;
+  border-bottom: 2px solid @line-strong;
+}
+
+/* Urgent: block + underline + weight (impossible to miss) */
+#workspaces button.urgent {
+  color: @text;
+  font-weight: 800;
+  background-color: @bg-crit;
+  border-bottom: 2px solid rgba(235, 160, 172, 0.92);
+}
+
+/* =========================================================
+   “Default” module colors (keep calm, mostly purple/neutral)
+   ========================================================= */
+
+/* Clock: highest priority information */
+#clock {
+  color: @text;
+  margin-right: 0;
+}
+
+/* Uptime: your central purple candy */
+#custom-uptime {
+  color: @mauve;
+  background-color: rgba(203, 166, 247, 0.08);
+  border-bottom: 2px solid rgba(203, 166, 247, 0.35);
+}
+
+/* Audio */
+#pulseaudio {
+  color: @lavender; /* calm and readable */
+}
+
+/* Muted: shape encoding + dim */
+#pulseaudio.muted {
+  color: @overlay1;
+  text-decoration: line-through;
+}
+
+/* Microphone: keep purple but distinct via underline */
+#pulseaudio.microphone {
+  color: @mauve;
+  background-color: rgba(203, 166, 247, 0.1);
+  border-bottom: 2px solid rgba(203, 166, 247, 0.45);
+}
+
+/* Network */
+#network {
+  color: @lavender;
+}
+
+/* Disconnected: block + underline + weight */
+#network.disconnected {
+  color: @text;
+  font-weight: 800;
+  background-color: @bg-crit;
+  border-bottom: 2px solid rgba(235, 160, 172, 0.92);
+}
+
+/* Network speed: keep neutral, avoid warn-like hue */
+#network.speed {
+  color: @subtext1;
+}
+
+/* Temperature: default calm; critical will become a block */
+#temperature {
+  color: @subtext1;
+}
+
+/* CPU / Memory: neutral by default (avoid “always alarming”) */
+#cpu {
+  color: @subtext0;
+}
+#memory {
+  color: @subtext0;
+}
+
+/* Disk: neutral by default */
+#disk {
+  color: @subtext0;
+}
+
+/* Backlight: info-ish (not warn-yellow) */
+#backlight {
+  color: @lavender;
+}
+
+/* Tray: neutral */
+#tray {
+  color: @subtext1;
+}
+
+/* Idle inhibitor */
+#idle_inhibitor {
+  color: rgba(166, 173, 200, 0.75);
+}
+#idle_inhibitor.activated {
+  color: @text;
+  background-color: @bg-ok;
+  border-bottom: 2px solid rgba(148, 226, 213, 0.85);
+}
+
+/* =========================================================
+   State system: warn / crit blocks
+   Apply to: temperature critical, battery warn/crit, disk warn/crit, notifications
+   ========================================================= */
+
+/* Temperature critical */
+#temperature.critical {
+  color: @text;
+  font-weight: 800;
+  background-color: @bg-crit;
+  border-bottom: 2px solid rgba(235, 160, 172, 0.92);
+}
+
+/* Battery: default ok-ish but not green-coded */
+#battery {
+  color: @teal;
+}
+
+/* Charging: positive block */
+#battery.charging {
+  color: @text;
+  background-color: @bg-ok;
+  border-bottom: 2px solid rgba(148, 226, 213, 0.85);
+}
+
+/* Warning: orange block */
+#battery.warning:not(.charging) {
+  color: @text;
+  background-color: @bg-warn;
+  border-bottom: 2px solid rgba(250, 179, 135, 0.88);
+}
+
+/* Critical: crit block + background pulse (text stays readable) */
+#battery.critical:not(.charging) {
+  color: @text;
+  font-weight: 800;
+  background-color: @bg-crit;
+  border-bottom: 2px solid rgba(235, 160, 172, 0.92);
+  animation: blink_bg 0.7s linear infinite alternate;
+}
+@keyframes blink_bg {
+  to {
+    background-color: rgba(235, 160, 172, 0.34);
+  }
+}
+
+/* Disk warning / critical */
+#disk.warning {
+  color: @text;
+  background-color: @bg-warn;
+  border-bottom: 2px solid rgba(250, 179, 135, 0.88);
+}
+#disk.critical {
+  color: @text;
+  font-weight: 800;
+  background-color: @bg-crit;
+  border-bottom: 2px solid rgba(235, 160, 172, 0.92);
+}
+
+/* Optional: if your waybar config adds warning/critical classes for cpu/memory */
+#cpu.warning,
+#memory.warning {
+  color: @text;
+  background-color: @bg-warn;
+  border-bottom: 2px solid rgba(250, 179, 135, 0.88);
+}
+#cpu.critical,
+#memory.critical {
+  color: @text;
+  font-weight: 800;
+  background-color: @bg-crit;
+  border-bottom: 2px solid rgba(235, 160, 172, 0.92);
+}
+
+/* =========================================================
+   Notifications (Mako custom module)
+   ========================================================= */
 #custom-notification {
   padding: 0 8px;
   background-color: transparent;
 }
 
-/* 闪烁动画定义 */
-@keyframes blink {
-  to {
-    color: #1a1b26; /* 背景变黑 */
-    background-color: #f7768e; /* 字体背景变红 */
-  }
+/* idle: practically invisible */
+#custom-notification.idle {
+  color: @overlay0;
 }
 
-/* 1. 正常状态 (低于 75%)：TokyoNight 柔和的青绿/蓝绿色 */
-#disk {
-  color: #7dcfff;
-  padding: 0 8px;
-  background-color: transparent;
+/* unread: critical block */
+#custom-notification.unread {
+  color: @text;
+  font-weight: 800;
+  background-color: @bg-crit;
+  border-bottom: 2px solid rgba(235, 160, 172, 0.92);
 }
 
-/* 2. 中负载/警告 (75% - 90%)：TokyoNight 橙黄色 */
-#disk.warning {
-  color: #e0af68;
+/* dnd: info block (purple/blue, not yellow) */
+#custom-notification.dnd {
+  color: @text;
+  background-color: @bg-info;
+  border-bottom: 2px solid rgba(180, 190, 254, 0.88);
 }
 
-/* 3. 高负载/危急 (大于 90%)：TokyoNight 红色 (带一点点加粗或闪烁效果也可以) */
-#disk.critical {
-  color: #f7768e;
-  font-weight: 800; /* 空间快满了，字重加大一点提醒自己 */
-}
-
-#network.speed {
-  color: #e0af68;
-} /* TokyoNight 黄 */
-
-#custom-uptime {
-  color: #bb9af7; /* TokyoNight 紫色，放在正中间很优雅 */
-  padding: 0 8px;
-  background-color: transparent;
-}
-
-/* idle inhibitor: OFF (default) */
-#idle_inhibitor {
-  color: rgba(169, 177, 214, 0.75); /* 注释灰 */
-}
-
-/* idle inhibitor: ON */
-#idle_inhibitor.activated {
-  color: rgba(125, 207, 255, 0.95); /* #7dcfff 青 */
-  border-bottom: 2px solid rgba(125, 207, 255, 0.85);
-}
-
-/* 可选：hover 稍微亮一点 */
-#idle_inhibitor:hover {
-  color: rgba(192, 202, 245, 0.95);
-}
+/* =========================================================
+   Optional: “section dividers” (if you later want more grouping)
+   You can add background blocks per module group if desired.
+   ========================================================= */

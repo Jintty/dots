@@ -16,6 +16,7 @@ clang
 cmake
 direnv
 dmidecode
+docker
 efibootmgr
 fastfetch
 fcitx5

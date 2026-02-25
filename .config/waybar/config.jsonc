@@ -4,7 +4,7 @@
   "height": 20,
   "spacing": 1, // 稍微给一点点间距，因为文字比图标更需要呼吸感
   "modules-left": ["niri/workspaces", "niri/window", "custom/animation"],
-  "modules-center": ["temperature", "cpu", "memory", "disk"],
+  "modules-center": ["temperature", "cpu", "memory", "disk", "custom/fan"],
   "modules-right": [
     "pulseaudio",
     "pulseaudio#microphone",
@@ -146,5 +146,10 @@
       "deactivated": "OFF",
     },
     "tooltip": false,
+  },
+  "custom/fan": {
+    "exec": "~/.config/waybar/scripts/fan.sh",
+    "interval": 2,
+    "return-type": "text",
   },
 }
