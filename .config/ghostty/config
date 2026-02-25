@@ -6,24 +6,6 @@ font-family = "Symbols Nerd Font Mono"
 font-thicken = true
 font-feature = calt, liga, cv01=3, cv02=1, cv05=5, cv40=2, cv41=7, cv42=1, cv44=8, cv47=8, cv49=2, cv52=1, cv59=4
 
-
-# font-family = "Recursive"
-# font-variation = wght=400
-# font-variation = MONO=1
-# font-variation = CASL=0
-# font-variation = slnt=0
-# font-variation-bold = wght=800
-# font-variation-bold = MONO=1
-# font-variation-bold = CASL=0
-# font-variation-italic = wght=400
-# font-variation-italic = MONO=1
-# font-variation-italic = CASL=1
-# font-variation-italic = slnt=-5
-# font-variation-bold-italic = wght=800
-# font-variation-bold-italic = MONO=1
-# font-variation-bold-italic = CASL=1
-# font-variation-bold-italic = slnt=-5
-
 theme = "Catppuccin Mocha"
 background-opacity = 0.9
 window-decoration = false
@@ -32,7 +14,7 @@ shell-integration-features = no-cursor
 cursor-style-blink = false
 mouse-hide-while-typing = true
 
-custom-shader = shaders/cursor_warp.glsl
+# custom-shader = shaders/cursor_warp.glsl
 
 window-padding-x = 0
 window-padding-y = 0
