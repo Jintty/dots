@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+GIT_DIR="${HOME}/.dots"
+WORK_TREE="${HOME}"
+
+dot() {
+  /usr/bin/git --git-dir="$GIT_DIR" --work-tree="$WORK_TREE" "$@"
+}
+
+# 你要纳入管理的“根目录清单”：只扫这些，避免卡死和误收
+PATHS=(
+  "$HOME/.tmux.conf"
+  "$HOME/.config/sioyek"
+  "$HOME/.config/fish/functions/"
+  "$HOME/.config/fish/config.fish"
+  "$HOME/.config/niri"
+  "$HOME/.config/nvim"
+  "$HOME/.config/waybar"
+  "$HOME/.config/yazi"
+  "$HOME/.config/mpv"
+  "$HOME/.config/kanshi"
+  "$HOME/.config/mako"
+  "$HOME/.config/rofi"
+  "$HOME/.config/fastfetch"
+  "$HOME/.config/gdu"
+  "$HOME/.config/pkglist"
+  "$HOME/.config/ghostty"
+  "$HOME/.config/swaylock"
+  "$HOME/.config/ob_plugin_configs"
+  "$HOME/.config/gdb"
+)
+
+# 性能保险栓（只对这个仓库）
+dot config --local status.showUntrackedFiles no >/dev/null
+
+# 只 add 这些路径，绝不扫整个 $HOME
+dot add -A -- "${PATHS[@]}"
+
+# 打印变更摘要
+dot status --short
+
+# 可选：自动提交
+if [[ "${1:-}" == "-m" ]]; then
+  msg="${2:-update dotfiles}"
+  dot commit -m "$msg"
+fi
+
+# 可选：自动推送
+if [[ "${1:-}" == "-p" ]]; then
+  dot push
+fi
