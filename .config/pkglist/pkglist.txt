@@ -82,11 +82,14 @@ pipewire-pulse
 polkit-gnome
 pwndbg
 python-hatchling
+qt5-wayland
+qt6-wayland
 qt6ct
 racket
 rime-ice-git
 ripgrep
 rofi
+sioyek
 steam
 sudo
 swaybg
@@ -119,8 +122,6 @@ xorg-xwayland
 xwayland-satellite
 yazi
 yt-dlp
-zathura
-zathura-pdf-mupdf
 zeal
 zen-browser
 zotero
