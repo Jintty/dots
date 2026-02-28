@@ -7,7 +7,7 @@ font-thicken = true
 font-feature = calt, liga, cv01=3, cv02=1, cv05=5, cv40=2, cv41=7, cv42=1, cv44=8, cv47=8, cv49=2, cv52=1, cv59=4
 
 theme = "Catppuccin Mocha"
-background-opacity = 0.95
+background-opacity = 0.93
 window-decoration = false
 cursor-style = block
 shell-integration-features = no-cursor
