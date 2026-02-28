@@ -12,7 +12,7 @@ dot() {
 PATHS=(
   "$HOME/.tmux.conf"
   "$HOME/.config/sioyek"
-  "$HOME/.config/fish/functions/"
+  "$HOME/.config/fish/functions"
   "$HOME/.config/fish/config.fish"
   "$HOME/.config/niri"
   "$HOME/.config/nvim"
@@ -29,6 +29,7 @@ PATHS=(
   "$HOME/.config/swaylock"
   "$HOME/.config/ob_plugin_configs"
   "$HOME/.config/gdb"
+  "$HOME/.local/bin"
 )
 
 # 性能保险栓（只对这个仓库）
