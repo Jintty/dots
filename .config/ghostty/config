@@ -6,14 +6,14 @@ font-family = "Symbols Nerd Font Mono"
 font-thicken = true
 font-feature = calt, liga, cv01=3, cv02=1, cv05=5, cv40=2, cv41=7, cv42=1, cv44=8, cv47=8, cv49=2, cv52=1, cv59=4
 
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor
+mouse-hide-while-typing = true
+
 theme = "Catppuccin Mocha"
 background-opacity = 0.93
 window-decoration = false
-cursor-style = block
-shell-integration-features = no-cursor
-cursor-style-blink = false
-mouse-hide-while-typing = true
-
 window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
