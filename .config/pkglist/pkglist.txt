@@ -51,6 +51,7 @@ lazygit
 libva-utils
 linux
 linux-firmware
+lnav
 lsd
 lshw
 ly

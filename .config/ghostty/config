@@ -8,8 +8,8 @@ font-feature = calt, liga, cv01=3, cv02=1, cv05=5, cv40=2, cv41=7, cv42=1, cv44=
 
 cursor-style = block
 cursor-style-blink = false
-shell-integration-features = no-cursor
 mouse-hide-while-typing = true
+shell-integration-features = no-cursor
 
 theme = "Catppuccin Mocha"
 window-decoration = false
