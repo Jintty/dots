@@ -8,7 +8,6 @@ dot() {
   /usr/bin/git --git-dir="$GIT_DIR" --work-tree="$WORK_TREE" "$@"
 }
 
-# 你要纳入管理的“根目录清单”：只扫这些，避免卡死和误收
 PATHS=(
   "$HOME/.tmux.conf"
   "$HOME/.config/sioyek"
@@ -31,6 +30,12 @@ PATHS=(
   "$HOME/.config/gdb"
   "$HOME/.local/bin"
 )
+
+# 仅用于 hooks：打印 PATHS 并退出（不做任何 git 操作）
+if [[ "${1:-}" == "--print-paths" ]]; then
+  printf '%s\n' "${PATHS[@]}"
+  exit 0
+fi
 
 # 性能保险栓（只对这个仓库）
 dot config --local status.showUntrackedFiles no >/dev/null
